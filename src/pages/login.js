@@ -1,27 +1,39 @@
 "use client";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { deleteCookie } from 'cookies-next';
 import Layout from "@/components/Layout";
 import { carreras } from "@/cfg/carreras";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 
 export default function Login() {
+  const router = useRouter();
+
   const [credentials, setCredentials] = useState({
     cuenta: "",
     nombre: "",
     carrera: "",
   });
-  const router = useRouter();
+
+  useEffect(() => {
+    deleteCookie('sessionToken');
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post("/api/auth/login", credentials);
     if (res.status === 200) {
-      router.push("/materias");
+      router.push('/materias');
+    }
+    else if (res.status === 401){
+      alert("Favor de Ingresar tu Nombre Completo");
+    }
+    else if(res.status === 402){
+      alert("Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente");
     }
   };
-  
+
   return (
     <>
       <Layout title="Login">

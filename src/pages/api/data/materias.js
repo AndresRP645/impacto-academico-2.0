@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
-import { getCookie } from "cookies-next";
+import { sign } from "jsonwebtoken";
+import { setCookie, getCookie } from "cookies-next";
 import pool from "@/cfg/database";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    const token = getCookie("sessionToken",{req, res});
-    const {carrera} = jwt.verify(token, "secret");
+    const session = getCookie("sessionToken",{req, res});
+    const {carrera} = jwt.verify(session, "secret");
 
     var materias = {};
     for (var sem = 1; sem < 11; sem++) {
@@ -19,6 +20,8 @@ export default async function handler(req, res) {
             materias[sem][reg.id_Materia] = reg.Nombre;
         });
     }
+
+    setCookie('materiasToken', JSON.stringify(materias), { req, res, maxAge: 60 * 60});
 
     res.status(200).json({materias});
   }

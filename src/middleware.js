@@ -1,8 +1,8 @@
-/*import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";
 
 export async function middleware(request) {
-  const jwt = request.cookies.get("myTokenName");
+  const jwt = request.cookies.get("sessionToken");
 
   if (!jwt) return NextResponse.redirect(new URL("/login", request.url));
 
@@ -18,5 +18,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/", "/dashboard/:path*"],
-};*/
+  matcher: ["/materias", "/preguntas", "/institucion"],
+};

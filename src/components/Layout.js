@@ -5,7 +5,7 @@ import Navigation from "@/components/Navigation";
 import Container from "react-bootstrap/Container";
 
 
-export default function Layout({ page, title, children }) {
+export default function Layout({ title, nav, children }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function Layout({ page, title, children }) {
   }, []);
   return (
     <>
-      <Navigation page={page} title={title} />
+      <Navigation nav={nav} title={title} />
       <Container className="container-fluid p-5">{children}</Container>
     </>
   );

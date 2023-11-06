@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 export default function Error({ statusCode }) {
   return (
     <>
-      <Layout title={`Error ${statusCode}`}>
+      <Layout nav='login' title={`Error ${statusCode}`}>
         <Container>
           <Row>
             <Col md="3" className="mx-auto text-center">

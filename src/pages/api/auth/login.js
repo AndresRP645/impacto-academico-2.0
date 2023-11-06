@@ -1,5 +1,5 @@
 import { sign } from "jsonwebtoken";
-import { setCookie} from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import pool from "@/cfg/database";
 
 export default async function handler(req, res) {
@@ -51,15 +51,14 @@ export default async function handler(req, res) {
 
         res.status(200).json({message: "OK"});
       } else {
-        console.log("error");
-        res.status(401).json({message: "Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente"});
+        res.status(402).json({message: "Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente"});
       }
     } else {
       const newUser = {
         id: cuenta,
         Cuenta: cuenta,
-        Nombre,
-        carrera,
+        Nombre: nombre,
+        id_Carrera: carrera,
       };
       await pool.query("INSERT INTO Alumnos SET ?", [newUser]);
 
