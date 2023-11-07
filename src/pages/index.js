@@ -11,11 +11,23 @@ export default function Index() {
             <Col md="4" className="mx-auto text-center">
             <Card>
               <Card.Header>
-                Ver Gráficas
+                Ver Respuestas
               </Card.Header>
               <Card.Body>
               <Link href="/info" passHref legacyBehavior>
                     <a className="btn btn-light m-4"><Card.Img className="image" src="/graph.png" /></a>
+                  </Link>
+              </Card.Body>
+            </Card>
+            </Col>
+            <Col md="4" className="mx-auto text-center">
+            <Card>
+              <Card.Header>
+                chi cuadrada de pearson
+              </Card.Header>
+              <Card.Body>
+              <Link href="/correlacion" passHref legacyBehavior>
+                    <a className="btn btn-success m-4"><Card.Img className="image" src="/x2.png" /></a>
                   </Link>
               </Card.Body>
             </Card>

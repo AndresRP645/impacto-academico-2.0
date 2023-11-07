@@ -2,7 +2,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { deleteCookie } from 'cookies-next';
+import { deleteCookie } from "cookies-next";
+import Link from "next/link";
 import Layout from "@/components/Layout";
 import { carreras } from "@/cfg/carreras";
 import { Container, Row, Col, Card, Form, Button } from "react-bootstrap";
@@ -17,20 +18,20 @@ export default function Login() {
   });
 
   useEffect(() => {
-    deleteCookie('sessionToken');
+    deleteCookie("sessionToken");
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const res = await axios.post("/api/auth/login", credentials);
     if (res.status === 200) {
-      router.push('/materias');
-    }
-    else if (res.status === 401){
+      router.push("/materias");
+    } else if (res.status === 401) {
       alert("Favor de Ingresar tu Nombre Completo");
-    }
-    else if(res.status === 402){
-      alert("Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente");
+    } else if (res.status === 402) {
+      alert(
+        "Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente"
+      );
     }
   };
 
@@ -97,6 +98,9 @@ export default function Login() {
                       <Button variant="success" type="submit">
                         Ingresar
                       </Button>
+                      <Link href="/" passHref legacyBehavior>
+                        <a className="btn btn-danger m-4">regresar</a>
+                      </Link>
                     </Form.Group>
                   </Form>
                 </Card.Body>

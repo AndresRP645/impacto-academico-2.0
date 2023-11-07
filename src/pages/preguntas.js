@@ -106,7 +106,7 @@ export default function Preguntas() {
                   </>
                 ))}
 
-                <h3 className="mx-auto text-center">Desempeño Estudiantil</h3>
+                <h4 className="mx-auto text-center">Desempeño Estudiantil</h4>
                 <br />
                 {Object.entries(estudiantil).map((pregunta, i) => (
                   <>
@@ -159,7 +159,7 @@ export default function Preguntas() {
                   </>
                 ))}
 
-                <h3 className="mx-auto text-center">Identidad Institucional</h3>
+                <h4 className="mx-auto text-center">Identidad Institucional</h4>
                 <br />
                 {Object.entries(institucion).map((pregunta, i) => (
                   <>

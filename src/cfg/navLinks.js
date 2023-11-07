@@ -6,11 +6,7 @@ export const login = [
     {
       title: "Ver Datos",
       path: "/info",
-    },
-    {
-      title: "Ver Gráfica",
-      path: "/graphs",
-    },
+    }
   ];
 
 
@@ -22,9 +18,5 @@ export const logout = [
     {
       title: "Ver Datos",
       path: "/info",
-    },
-    {
-      title: "Ver Gráfica",
-      path: "/graphs",
-    },
+    }
   ];
