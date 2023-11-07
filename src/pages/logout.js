@@ -8,7 +8,7 @@ export default function Logout() {
 
   useEffect(() => {
     deleteCookie('sessionToken');
-    router.push('/login');
+    router.push('/');
   }, []);
 
   return (

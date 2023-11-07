@@ -6,7 +6,11 @@ export default function Navigation({ title, nav }) {
     <>
       <Navbar key="xl" bg="dark" variant="dark" expand="xl" className="mb-3">
         <Container>
-          <Navbar.Brand>{title}</Navbar.Brand>
+          <Navbar.Brand>
+            <Link href="/" passHref legacyBehavior>
+              <Nav.Link>Inicio</Nav.Link>
+            </Link>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-xxl" />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-xxl"
@@ -20,23 +24,23 @@ export default function Navigation({ title, nav }) {
             </Offcanvas.Header>
             <Offcanvas.Body className="justify-content-end">
               <Nav variant="pills">
-                {nav === 'login' ? 
-                <>
-                  {login.map(({ title, path }, i) => (
-                  <Link href={path} passHref legacyBehavior key={i}>
-                    <Nav.Link>{title}</Nav.Link>
-                  </Link>
-                ))}
-                </>
-                : 
-                <>
-                  {logout.map(({ title, path }, i) => (
-                  <Link href={path} passHref legacyBehavior key={i}>
-                    <Nav.Link>{title}</Nav.Link>
-                  </Link>
-                ))}
-                </>
-              }
+                {nav === "login" ? (
+                  <>
+                    {login.map(({ title, path }, i) => (
+                      <Link href={path} passHref legacyBehavior key={i}>
+                        <Nav.Link>{title}</Nav.Link>
+                      </Link>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    {logout.map(({ title, path }, i) => (
+                      <Link href={path} passHref legacyBehavior key={i}>
+                        <Nav.Link>{title}</Nav.Link>
+                      </Link>
+                    ))}
+                  </>
+                )}
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

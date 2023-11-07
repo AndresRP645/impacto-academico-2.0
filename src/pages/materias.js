@@ -45,7 +45,7 @@ export default function Materias() {
             <h5 className="text-center">
               Selecciona las materias que estas cursando este semestre
             </h5>
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
               {Object.values(materias).map((periodo, i) => (
                 <div key={i}>
                   <Container className="p-4">
@@ -78,7 +78,7 @@ export default function Materias() {
                     <a className="btn btn-danger m-4">Salir</a>
                   </Link>
               </Container>
-            </form>
+            </Form>
           </Row>
         </Container>
       </Layout>
