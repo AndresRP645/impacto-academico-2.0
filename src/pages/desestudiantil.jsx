@@ -79,8 +79,8 @@ export default function DesEstudiantil() {
                   <br />
                   <Table striped bordered hover variant="secondary">
                     <thead>
-                      <tr>
-                        <th> id </th>
+                      <tr className="table-primary">
+                        <th className="table-success"> id </th>
                         {Array.from({ length: 10 }).map((_, index) => (
                           <th key={index}> P {index + 1} </th>
                         ))}
@@ -89,7 +89,7 @@ export default function DesEstudiantil() {
                     <tbody>
                       {Object.values(estudiantil).map((resp, i) => (
                         <tr key={i}>
-                          <td>{i + 1}</td>
+                          <td className="table-info">{i + 1}</td>
                           {Object.values(resp).map((e, j) => (
                             <td key={j}>{e}</td>
                           ))}
