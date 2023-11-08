@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import Link from "next/link";
 import { Container, Row, Card, Col, Button, Image } from "react-bootstrap";
 
-export default function Index() {
+export default function Menu() {
   return (
     <>
       <Layout nav='login' title="Encuesta Impacto Academico">

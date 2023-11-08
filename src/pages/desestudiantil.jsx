@@ -8,50 +8,51 @@ import {
   Row,
   Card,
   Col,
-  Table,
-  Form,
   Button,
+  Form,
+  Table,
 } from "react-bootstrap";
 
-export default function DesDocente() {
+export default function DesEstudiantil() {
   const router = useRouter();
-  const [docente, setDocente] = useState([]);
+  const [estudiantil, setEstudiantil] = useState([]);
 
   useEffect(() => {
-    fetch("/api/info/docente")
+    fetch("/api/info/estudiantil")
       .then((res) => res.json())
       .then((data) => {
-        setDocente(data);
+        setEstudiantil(data);
       });
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var varp = [];
+    var map = [];
     var sum = [];
-    docente.forEach((key) => {
-      varp[key] = 0;
-      Object.entries(key).forEach((value) => {
-        console.log(value[0], value[1]);
-      varp[key] = varp[key] + value;
+    var varp = [];
+    
+    estudiantil.forEach((key, i) => {
+      map[i] = [];
+      Object.entries(key).forEach((value, j) => {
+        map[i][j] = value[1];
       });
+      sum[i] = suma(map[i]);
     });
 
-    alert(JSON.stringify(varp));
-    /*
-    const res = await axios.post("/api/auth/login", credentials);
-    if (res.status === 200) {
-      router.push("/materias");
-    } else if (res.status === 401) {
-      alert("Favor de Ingresar tu Nombre Completo");
-    } else if (res.status === 402) {
-      alert(
-        "Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente"
-      );
-    }*/
-  };
 
-  const alpha = () => {};
+    var K = map[0].length;
+    console.log(K);
+
+    for (let i = 0; i < map[0].length; i++) {
+      varp[i] = varpSi(map, i);
+    }
+
+    var St = varpSt(sum);
+    var a = (K/(K-1))*(1-(suma(varp)/St));
+
+
+    alert("El valor del alpha de cronbach para este data set es: " + a);
+  };
 
   return (
     <>
@@ -63,16 +64,16 @@ export default function DesDocente() {
         <Container className="mx-auto text-center">
           <Row>
             <Col md="12" className="mx-auto text-center">
-              <Link href="/" passHref legacyBehavior>
+              <Link href="/menu" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
               <br />
               <Card>
-                <Card.Header>Desempeño Docente</Card.Header>
+                <Card.Header>Desempeño Estudiantil</Card.Header>
                 <Card.Body>
                   <Form onSubmit={handleSubmit}>
                     <Button variant="success" type="submit">
-                      valor alpha de cronbatch para este dataset
+                      valor alpha de cronbach para este dataset
                     </Button>
                   </Form>
                   <br />
@@ -80,13 +81,13 @@ export default function DesDocente() {
                     <thead>
                       <tr>
                         <th> id </th>
-                        {Array.from({ length: 30 }).map((_, index) => (
+                        {Array.from({ length: 10 }).map((_, index) => (
                           <th key={index}> P {index + 1} </th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {Object.values(docente).map((resp, i) => (
+                      {Object.values(estudiantil).map((resp, i) => (
                         <tr key={i}>
                           <td>{i + 1}</td>
                           {Object.values(resp).map((e, j) => (
@@ -98,14 +99,56 @@ export default function DesDocente() {
                   </Table>
                 </Card.Body>
               </Card>
-              <Link href="/" passHref legacyBehavior>
+              <Link href="/menu" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
             </Col>
           </Row>
         </Container>
-        <br />
       </Layout>
     </>
   );
+}
+
+function suma(entry) {
+  var sum = 0;
+  for (let i = 0; i < entry.length; i++) {
+    sum += entry[i];
+  }
+  return sum;
+}
+
+function varpSi(arr, j) {
+  var varp = 0;
+  var sum = 0;
+  var aux = [];
+  for (let i = 0; i < arr.length; i++) {
+    aux[i] = arr[i][j];
+    sum += arr[i][j];
+  }
+  const prom = sum / aux.length;
+
+  for (let i = 0; i < aux.length; i++) {
+    varp += (aux[i] - prom) ** 2;
+  }
+
+  varp = varp / (aux.length);
+
+  return varp;
+}
+
+function varpSt(aux) {
+  var varp = 0;
+  var sum = 0;
+  for (let i = 0; i < aux.length; i++) {
+    sum += aux[i];
+  }
+  const prom = sum / aux.length;
+  for (let i = 0; i < aux.length; i++) {
+    varp += (aux[i] - prom) ** 2;
+  }
+
+  varp = varp / (aux.length);
+
+  return varp;
 }

@@ -35,7 +35,7 @@ export default function Index() {
           </Row>
           <Row>
           <Col md="4" className="mx-auto text-center">
-          <Link href="/" passHref legacyBehavior>
+          <Link href="/menu" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
           </Col>
