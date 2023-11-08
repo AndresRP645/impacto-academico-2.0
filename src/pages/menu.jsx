@@ -8,7 +8,7 @@ export default function Menu() {
       <Layout nav='login' title="Encuesta Impacto Academico">
         <Container>
           <Row>
-            <Col md="4" className="mx-auto text-center">
+            <Col md="4" className="mx-auto p-3 text-center">
             <Card>
               <Card.Header>
                 Ver Respuestas
@@ -20,7 +20,8 @@ export default function Menu() {
               </Card.Body>
             </Card>
             </Col>
-            <Col md="4" className="mx-auto text-center">
+            <br />
+            <Col md="4" className="mx-auto p-3 text-center">
             <Card>
               <Card.Header>
                 chi cuadrada de pearson
@@ -32,7 +33,8 @@ export default function Menu() {
               </Card.Body>
             </Card>
             </Col>
-            <Col md="4" className="mx-auto text-center">
+            <br />
+            <Col md="4" className="mx-auto p-3 text-center">
             <Card>
               <Card.Header>
                 Contestar encuesta
