@@ -22,7 +22,6 @@ export default function Preguntas() {
           setEstudiantil(data.DesempeñoEstudiantil);
           setInstitucion(data.IdentidadInstitucional);
           setMaterias(JSON.parse(getCookie("materiasToken")));
-          console.log(materias);
         });
     } else {
       router.push("/materias");
