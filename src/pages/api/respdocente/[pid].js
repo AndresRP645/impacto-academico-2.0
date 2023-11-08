@@ -5,8 +5,8 @@ import pool from "@/cfg/database";
 export default async function handler(req, res) {
 
   if(req.method === "GET"){
-    const pregunta = JSON.parse(req.body);
-    const str = 'SELECT ' + pregunta + ' FROM RespDsmpEstdtl';
+    const {pid} = req.query;
+    const str = 'SELECT ' + pid + ' FROM RespDsmpDcnte';
       
     const consulta = await pool.query(str);
     var respuestas = [];
