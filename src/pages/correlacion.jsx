@@ -46,7 +46,7 @@ export default function Correlacion() {
         setDatapestudiantil(data);
       });
 
-    const tabla = tablaContingencia(datadocente, dataestudiantil);
+    const tabla = await tablaContingencia(datadocente, dataestudiantil);
     const X_cuadrada = await Chi_cuadrada(tabla);
     setTabla(
       <>
