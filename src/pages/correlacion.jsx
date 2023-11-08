@@ -47,7 +47,7 @@ export default function Correlacion() {
       });
 
     const tabla = tablaContingencia(datadocente, dataestudiantil);
-    const X_cuadrada = Chi_cuadrada(tabla);
+    const X_cuadrada = await Chi_cuadrada(tabla);
     setTabla(
       <>
         <br />
