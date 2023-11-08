@@ -35,12 +35,18 @@ export default function Correlacion() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    fetch("/api/respdocente/" + pdocente)
+    fetch("/api/respdocente/row", {
+      method: 'GET',
+      body: JSON.stringify(pdocente),
+    })
       .then((res) => res.json())
       .then((data) => {
         setDatadocente(data);
       });
-    fetch("/api/respestudiantil/" + pestudiantil)
+    fetch("/api/respestudiantil/row", {
+      method: 'GET',
+      body: JSON.stringify(pestudiantil),
+    })
       .then((res) => res.json())
       .then((data) => {
         setDatapestudiantil(data);
