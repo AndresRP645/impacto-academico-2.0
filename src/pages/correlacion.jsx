@@ -17,6 +17,10 @@ export default function Correlacion() {
               Text
               </Card.Body>
             </Card>
+            <br />
+            <Link href="/menu" passHref legacyBehavior>
+                <a className="btn btn-danger m-4">regresar</a>
+              </Link>
             </Col>
           </Row>
         </Container>

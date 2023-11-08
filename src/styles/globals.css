@@ -5,7 +5,8 @@ body {
 }
 
 .image {
-  width: 200px;
+  width: 10vw;
+  position: relative;
   border-radius: 10px;
 }
 
