@@ -21,6 +21,10 @@ export default function Correlacion() {
   const [datadocente, setDatadocente] = useState([]);
   const [dataestudiantil, setDatapestudiantil] = useState([]);
 
+  const [contingencia, setContingencia] = useState([]);
+  const [x2, setX2] = useState(0);
+
+
   const [tabla, setTabla] = useState(<div></div>);
 
   useEffect(() => {
@@ -46,11 +50,8 @@ export default function Correlacion() {
         setDatapestudiantil(data);
       });
 
-    const tabla = await tablaContingencia(datadocente, dataestudiantil);
-    const X_cuadrada = await Chi_cuadrada(tabla);
-    console.log("Loading...");
-    console.log("tabla", tabla);
-    console.log("X_cuadrada", X_cuadrada);
+    setContingencia(await tablaContingencia(datadocente, dataestudiantil));
+    setX2(await Chi_cuadrada(contingencia));
     setTabla(
       <>
         <br />

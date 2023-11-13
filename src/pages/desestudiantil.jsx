@@ -16,6 +16,7 @@ import {
 export default function DesEstudiantil() {
   const router = useRouter();
   const [estudiantil, setEstudiantil] = useState([]);
+  const [alpha, setAlpha] = useState(<></>);
 
   useEffect(() => {
     fetch("/api/info/estudiantil")
@@ -27,31 +28,12 @@ export default function DesEstudiantil() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var map = [];
-    var sum = [];
-    var varp = [];
-    
-    estudiantil.forEach((key, i) => {
-      map[i] = [];
-      Object.entries(key).forEach((value, j) => {
-        map[i][j] = value[1];
-      });
-      sum[i] = suma(map[i]);
-    });
 
-
-    var K = map[0].length;
-    console.log(K);
-
-    for (let i = 0; i < map[0].length; i++) {
-      varp[i] = varpSi(map, i);
-    }
-
-    var St = varpSt(sum);
-    var a = (K/(K-1))*(1-(suma(varp)/St));
-
-
-    alert("El valor del alpha de cronbach para este data set es: " + a);
+    setAlpha(<>
+      <br />
+      <p>El valor del alpha de cronbach para este data set es:</p>
+      <p>{alphaCronbach(estudiantil)}</p>
+    </>);
   };
 
   return (
@@ -76,6 +58,7 @@ export default function DesEstudiantil() {
                       valor alpha de cronbach para este dataset
                     </Button>
                   </Form>
+                  {alpha}
                   <br />
                   <Table striped bordered hover variant="secondary">
                     <thead>
@@ -108,6 +91,32 @@ export default function DesEstudiantil() {
       </Layout>
     </>
   );
+}
+
+
+function alphaCronbach(estudiantil){
+  var map = [];
+  var sum = [];
+  var varp = [];
+  
+  estudiantil.forEach((key, i) => {
+    map[i] = [];
+    Object.entries(key).forEach((value, j) => {
+      map[i][j] = value[1];
+    });
+    sum[i] = suma(map[i]);
+  });
+
+
+  var K = map[0].length;
+  console.log(K);
+
+  for (let i = 0; i < map[0].length; i++) {
+    varp[i] = varpSi(map, i);
+  }
+
+  var St = varpSt(sum);
+  return (K/(K-1))*(1-(suma(varp)/St));
 }
 
 function suma(entry) {

@@ -32,6 +32,18 @@ export default function Index() {
               </Card.Body>
             </Card>
             </Col>
+            <Col md="4" className="mx-auto text-center">
+            <Card>
+              <Card.Header>
+                Todas las Respuestas
+              </Card.Header>
+              <Card.Body>
+              <Link href="/respuestas" passHref legacyBehavior>
+                    <a className="btn btn-info m-4"><Card.Img className="image" src="/exam.png" /></a>
+                  </Link>
+              </Card.Body>
+            </Card>
+            </Col>
           </Row>
           <Row>
           <Col md="4" className="mx-auto text-center">

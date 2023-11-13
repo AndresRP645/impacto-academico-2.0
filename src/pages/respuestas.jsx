@@ -8,31 +8,31 @@ import {
   Row,
   Card,
   Col,
-  Table,
-  Form,
   Button,
+  Form,
+  Table,
 } from "react-bootstrap";
 
-export default function DesDocente() {
+export default function Respuestas() {
   const router = useRouter();
-  const [docente, setDocente] = useState([]);
+  const [respuestas, setRespuestas] = useState([]);
   const [alpha, setAlpha] = useState(<></>);
 
   useEffect(() => {
-    fetch("/api/info/docente")
+    fetch("/api/info/respuestas")
       .then((res) => res.json())
       .then((data) => {
-        setDocente(data);
+        setRespuestas(data);
       });
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     setAlpha(<>
       <br />
       <p>El valor del alpha de cronbach para este data set es:</p>
-      <p>{alphaCronbach(docente)}</p>
+      <p>{alphaCronbach(respuestas)}</p>
     </>);
   };
 
@@ -51,7 +51,7 @@ export default function DesDocente() {
               </Link>
               <br />
               <Card>
-                <Card.Header>Desempeño Docente</Card.Header>
+                <Card.Header>Total de Respuestas</Card.Header>
                 <Card.Body>
                   <Form onSubmit={handleSubmit}>
                     <Button variant="success" type="submit">
@@ -64,13 +64,13 @@ export default function DesDocente() {
                     <thead>
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
-                        {Array.from({ length: 30 }).map((_, index) => (
+                        {Array.from({ length: 10 }).map((_, index) => (
                           <th key={index}> P {index + 1} </th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {Object.values(docente).map((resp, i) => (
+                      {Object.values(respuestas).map((resp, i) => (
                         <tr key={i}>
                           <td className="table-info">{i + 1}</td>
                           {Object.values(resp).map((e, j) => (
@@ -88,18 +88,18 @@ export default function DesDocente() {
             </Col>
           </Row>
         </Container>
-        <br />
       </Layout>
     </>
   );
 }
 
-function alphaCronbach(docente){
+
+function alphaCronbach(respuestas){
   var map = [];
   var sum = [];
   var varp = [];
   
-  docente.forEach((key, i) => {
+  respuestas.forEach((key, i) => {
     map[i] = [];
     Object.entries(key).forEach((value, j) => {
       map[i][j] = value[1];
@@ -109,6 +109,7 @@ function alphaCronbach(docente){
 
 
   var K = map[0].length;
+  console.log(K);
 
   for (let i = 0; i < map[0].length; i++) {
     varp[i] = varpSi(map, i);
@@ -117,7 +118,6 @@ function alphaCronbach(docente){
   var St = varpSt(sum);
   return (K/(K-1))*(1-(suma(varp)/St));
 }
-
 
 function suma(entry) {
   var sum = 0;
