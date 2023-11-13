@@ -24,7 +24,6 @@ export default function Correlacion() {
   const [contingencia, setContingencia] = useState([]);
   const [x2, setX2] = useState(0);
 
-
   const [tabla, setTabla] = useState(<div></div>);
 
   useEffect(() => {
@@ -38,12 +37,12 @@ export default function Correlacion() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await fetch("/api/respdocente/" + pdocente)
       .then((res) => res.json())
       .then((data) => {
         setDatadocente(data);
       });
+
     await fetch("/api/respestudiantil/" + pestudiantil)
       .then((res) => res.json())
       .then((data) => {
@@ -52,6 +51,7 @@ export default function Correlacion() {
 
     setContingencia(await tablaContingencia(datadocente, dataestudiantil));
     setX2(await Chi_cuadrada(contingencia));
+
     setTabla(
       <>
         <br />
@@ -69,7 +69,7 @@ export default function Correlacion() {
                   </tr>
                 </thead>
                 <tbody>
-                  {Object.values(tabla).map((resp, i) => (
+                  {Object.values(contingencia).map((resp, i) => (
                     <tr key={i}>
                       <td className="table-info">{i + 1}</td>
                       {Object.values(resp).map((e, j) => (
@@ -80,14 +80,33 @@ export default function Correlacion() {
                 </tbody>
               </Table>
               <br />
-              <p>El valor de la chi cuadrada es de: {X_cuadrada}</p>
+              <p>El valor de la chi cuadrada es de: {x2}</p>
             </Card.Body>
           </Card>
         </Col>
         <br />
       </>
     );
-    
+  };
+
+  const getRespDocente = async (e) => {
+    setPdocente("respuesta_" + e.target.value);
+    await fetch("/api/respdocente/" + pdocente)
+      .then((res) => res.json())
+      .then((data) => {
+        setDatadocente(data);
+      });
+    console.log(datadocente);
+  };
+
+  const getRespEstudiante = async (e) => {
+    setPestudiantil("respuesta_" + (e.target.value - 30));
+    await fetch("/api/respestudiantil/" + pestudiantil)
+      .then((res) => res.json())
+      .then((data) => {
+        setDatapestudiantil(data);
+      });
+    console.log(dataestudiantil);
   };
 
   return (
@@ -103,9 +122,7 @@ export default function Correlacion() {
                     <Form.Select
                       aria-label="Desempeño Docente"
                       name="docente"
-                      onChange={(e) =>
-                        setPdocente("respuesta_" + e.target.value)
-                      }
+                      onChange={(e) => getRespDocente(e)}
                     >
                       <option>
                         Selecciona la pregunta de Desempeño Docente
@@ -121,9 +138,7 @@ export default function Correlacion() {
                     <Form.Select
                       aria-label="Desempeño Estudiantil"
                       name="estudiantil"
-                      onChange={(e) =>
-                        setPestudiantil("respuesta_" + (e.target.value - 30))
-                      }
+                      onChange={(e) => getRespEstudiante(e)}
                     >
                       <option>
                         Selecciona la pregunta de Desempeño Estudiantil
@@ -183,7 +198,7 @@ function totalesVerticales(contingencia) {
   var totales = [];
   for (let i = 0; i < contingencia.length; i++) {
     totales[i] = 0;
-    for (let j = 0; j < contingencia[i].length; j++) {
+    for (let j = 0; j < contingencia.length; j++) {
       totales[i] += contingencia[i][j];
     }
   }
@@ -192,7 +207,7 @@ function totalesVerticales(contingencia) {
 
 function totalesHorizontales(contingencia) {
   var totales = [];
-  for (let j = 0; j < contingencia[0].length; j++) {
+  for (let j = 0; j < contingencia.length; j++) {
     totales[j] = 0;
     for (let i = 0; i < contingencia.length; i++) {
       totales[j] += contingencia[i][j];
@@ -233,11 +248,6 @@ function Chi_cuadrada(contingencia) {
   const tVerticales = totalesVerticales(contingencia);
   const tHorizontales = totalesHorizontales(contingencia);
   const T = total(contingencia);
-
-  console.log(contingencia);
-  console.log(tVerticales);
-  console.log(tHorizontales);
-  console.log(T);
 
   var X_cuadrada = 0;
   for (let i = 0; i < contingencia.length; i++) {
