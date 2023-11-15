@@ -60,7 +60,7 @@ export default function DesEstudiantil() {
                   </Form>
                   {alpha}
                   <br />
-                  <Table striped bordered hover responsive="xxl" variant="secondary">
+                  <Table striped bordered hover responsive variant="secondary">
                     <thead>
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
