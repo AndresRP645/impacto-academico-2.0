@@ -27,3 +27,11 @@ table {
   table-layout: fixed;
   width: 100px;
 }
+
+.celdas{
+  font-size: 80%;
+}
+
+.row-table{
+  font-size: 70%;
+}

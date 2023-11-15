@@ -111,9 +111,9 @@ export default function Preguntas() {
                   <>
                     <Card>
                       <Card.Header>
-                        <h5 className="mx-auto my-2 text-center">
+                        <h7 className="mx-auto my-2 text-center">
                           {pregunta[0]}.- {pregunta[1]}
-                        </h5>
+                        </h7>
                       </Card.Header>
                       <Card.Body className="mx-auto">
                         {Object.values(materias).map((materia, i) => (
@@ -164,9 +164,9 @@ export default function Preguntas() {
                   <>
                     <Card>
                       <Card.Header>
-                        <h5 className="mx-auto my-2 text-center">
+                        <h7 className="mx-auto my-2 text-center">
                           {pregunta[0]}.- {pregunta[1]}
-                        </h5>
+                        </h7>
                       </Card.Header>
                       <Card.Body className="mx-auto">
                         <Form.Check // prettier-ignore

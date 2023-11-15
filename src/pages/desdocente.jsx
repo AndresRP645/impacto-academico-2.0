@@ -60,19 +60,19 @@ export default function DesDocente() {
                   </Form>
                   {alpha}
                   <br />
-                  <Table striped bordered hover variant="secondary">
+                  <Table striped bordered hover responsive="sm" variant="secondary">
                     <thead>
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
                         {Array.from({ length: 30 }).map((_, index) => (
-                          <th key={index}> <p className="verticalText">P {index + 1} </p></th>
+                          <th key={index}> <p className="celdas">P {index + 1} </p></th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
                       {Object.values(docente).map((resp, i) => (
                         <tr key={i}>
-                          <td className="table-info">{i + 1}</td>
+                          <td className="table-info row-table">{i + 1}</td>
                           {Object.values(resp).map((e, j) => (
                             <td key={j}>{e}</td>
                           ))}
