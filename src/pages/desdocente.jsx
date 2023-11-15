@@ -60,7 +60,7 @@ export default function DesDocente() {
                   </Form>
                   {alpha}
                   <br />
-                  <Table striped bordered hover responsive="lg" variant="secondary">
+                  <Table striped bordered hover responsive="xxl" variant="secondary">
                     <thead>
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
