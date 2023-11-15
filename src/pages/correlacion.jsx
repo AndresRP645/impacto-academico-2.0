@@ -13,16 +13,10 @@ import {
 } from "react-bootstrap";
 
 export default function Correlacion() {
-  const router = useRouter();
   const [docente, setDocente] = useState([]);
   const [estudiantil, setEstudiantil] = useState([]);
   const [pdocente, setPdocente] = useState(0);
   const [pestudiantil, setPestudiantil] = useState(0);
-  const [datadocente, setDatadocente] = useState([]);
-  const [dataestudiantil, setDatapestudiantil] = useState([]);
-
-  const [contingencia, setContingencia] = useState([]);
-  const [x2, setX2] = useState(0);
 
   const [tabla, setTabla] = useState(<div></div>);
 
@@ -37,21 +31,22 @@ export default function Correlacion() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("/api/respdocente/" + pdocente)
+
+      const datadocente = await fetch("/api/respdocente/" + pdocente)
       .then((res) => res.json())
       .then((data) => {
-        setDatadocente(data);
+        return data;
       });
 
-    await fetch("/api/respestudiantil/" + pestudiantil)
+      const dataestudiantil = await fetch("/api/respestudiantil/" + pestudiantil)
       .then((res) => res.json())
       .then((data) => {
-        setDatapestudiantil(data);
+        return data;
       });
-
-    setContingencia(await tablaContingencia(datadocente, dataestudiantil));
-    setX2(await Chi_cuadrada(contingencia));
-
+      
+    const contingencia = await tablaContingencia(datadocente, dataestudiantil);
+    const x2 = await Chi_cuadrada(contingencia);
+    
     setTabla(
       <>
         <br />
@@ -91,22 +86,10 @@ export default function Correlacion() {
 
   const getRespDocente = async (e) => {
     setPdocente("respuesta_" + e.target.value);
-    await fetch("/api/respdocente/" + pdocente)
-      .then((res) => res.json())
-      .then((data) => {
-        setDatadocente(data);
-      });
-    console.log(datadocente);
   };
 
   const getRespEstudiante = async (e) => {
     setPestudiantil("respuesta_" + (e.target.value - 30));
-    await fetch("/api/respestudiantil/" + pestudiantil)
-      .then((res) => res.json())
-      .then((data) => {
-        setDatapestudiantil(data);
-      });
-    console.log(dataestudiantil);
   };
 
   return (
