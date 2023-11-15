@@ -44,9 +44,9 @@ export default function Respuestas() {
         title="Encuesta Impacto Academico"
         className="mx-auto text-center"
       >
-        <Container className="mx-auto text-center">
-          <Row>
-            <Col md="12" className="mx-auto text-center">
+        <Container className="mx-auto text-center" fluid="xxl">
+          <Row xxl="auto">
+            <Col xxl="auto" className="mx-auto text-center">
               <Link href="/menu" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
@@ -66,7 +66,7 @@ export default function Respuestas() {
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
                         {Array.from({ length: 40 }).map((_, index) => (
-                          <th key={index}> P {index + 1} </th>
+                          <th key={index} ><p className="verticalText">P {index + 1}</p></th>
                         ))}
                       </tr>
                     </thead>

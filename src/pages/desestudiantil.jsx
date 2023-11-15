@@ -65,7 +65,7 @@ export default function DesEstudiantil() {
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
                         {Array.from({ length: 10 }).map((_, index) => (
-                          <th key={index}> P {index + 1} </th>
+                          <th key={index} className="verticalText"> <p>P {index + 1}</p> </th>
                         ))}
                       </tr>
                     </thead>

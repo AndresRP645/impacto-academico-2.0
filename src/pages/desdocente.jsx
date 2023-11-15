@@ -65,7 +65,7 @@ export default function DesDocente() {
                       <tr className="table-primary">
                         <th className="table-success"> id </th>
                         {Array.from({ length: 30 }).map((_, index) => (
-                          <th key={index}> P {index + 1} </th>
+                          <th key={index}> <p className="verticalText">P {index + 1} </p></th>
                         ))}
                       </tr>
                     </thead>
