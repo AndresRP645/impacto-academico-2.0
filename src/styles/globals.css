@@ -8,6 +8,16 @@ body {
   font-family: "Inter:wght@200&family=Nunito:wght@300&display=swap", sans-serif;
 }
 
+.offcanvas.offcanvas-end.show,
+.offcanvas.offcanvas-end.offcanvas-toggling {
+  background: url(../../public/menu-background.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-position: center;
+  color: white;
+}
+
 .image {
   width: 10vw;
   position: relative;
