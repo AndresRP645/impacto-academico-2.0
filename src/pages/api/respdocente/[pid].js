@@ -1,5 +1,3 @@
-import { sign } from "jsonwebtoken";
-import { setCookie, getCookie } from "cookies-next";
 import pool from "@/cfg/database";
 
 export default async function handler(req, res) {

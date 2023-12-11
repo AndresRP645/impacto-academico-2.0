@@ -28,12 +28,14 @@ export default function DesDocente() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    setAlpha(<>
-      <br />
-      <p>El valor del alpha de cronbach para este data set es:</p>
-      <p>{alphaCronbach(docente)}</p>
-    </>);
+
+    setAlpha(
+      <>
+        <br />
+        <p>El valor del alpha de cronbach para este data set es:</p>
+        <p>{alphaCronbach(docente)}</p>
+      </>
+    );
   };
 
   return (
@@ -46,7 +48,7 @@ export default function DesDocente() {
         <Container className="mx-auto text-center">
           <Row>
             <Col md="12" className="mx-auto text-center">
-              <Link href="/menu" passHref legacyBehavior>
+              <Link href="/info" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
               <br />
@@ -60,29 +62,40 @@ export default function DesDocente() {
                   </Form>
                   {alpha}
                   <br />
-                  <Table striped bordered hover responsive variant="secondary">
-                    <thead>
-                      <tr className="table-primary">
-                        <th className="table-success"> id </th>
-                        {Array.from({ length: 30 }).map((_, index) => (
-                          <th key={index}> <p className="celdas">P {index + 1} </p></th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {Object.values(docente).map((resp, i) => (
-                        <tr key={i}>
-                          <td className="table-info row-table">{i + 1}</td>
-                          {Object.values(resp).map((e, j) => (
-                            <td key={j}>{e}</td>
+                  <div className="data">
+                    <Table
+                      striped
+                      bordered
+                      hover
+                      responsive="lg"
+                      variant="secondary"
+                    >
+                      <thead>
+                        <tr className="table-primary">
+                          <th className="table-success"> id </th>
+                          {Array.from({ length: 30 }).map((_, index) => (
+                            <th key={index}>
+                              {" "}
+                              <p className="celdas">P {index + 1} </p>
+                            </th>
                           ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </Table>
+                      </thead>
+                      <tbody>
+                        {Object.values(docente).map((resp, i) => (
+                          <tr key={i}>
+                            <td className="table-info">{i + 1}</td>
+                            {Object.values(resp).map((e, j) => (
+                              <td key={j}>{e}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </div>
                 </Card.Body>
               </Card>
-              <Link href="/menu" passHref legacyBehavior>
+              <Link href="/info" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
             </Col>
@@ -94,11 +107,11 @@ export default function DesDocente() {
   );
 }
 
-function alphaCronbach(docente){
+function alphaCronbach(docente) {
   var map = [];
   var sum = [];
   var varp = [];
-  
+
   docente.forEach((key, i) => {
     map[i] = [];
     Object.entries(key).forEach((value, j) => {
@@ -107,7 +120,6 @@ function alphaCronbach(docente){
     sum[i] = suma(map[i]);
   });
 
-
   var K = map[0].length;
 
   for (let i = 0; i < map[0].length; i++) {
@@ -115,9 +127,8 @@ function alphaCronbach(docente){
   }
 
   var St = varpSt(sum);
-  return (K/(K-1))*(1-(suma(varp)/St));
+  return (K / (K - 1)) * (1 - suma(varp) / St);
 }
-
 
 function suma(entry) {
   var sum = 0;
@@ -141,7 +152,7 @@ function varpSi(arr, j) {
     varp += (aux[i] - prom) ** 2;
   }
 
-  varp = varp / (aux.length);
+  varp = varp / aux.length;
 
   return varp;
 }
@@ -157,7 +168,7 @@ function varpSt(aux) {
     varp += (aux[i] - prom) ** 2;
   }
 
-  varp = varp / (aux.length);
+  varp = varp / aux.length;
 
   return varp;
 }

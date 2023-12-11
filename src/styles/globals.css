@@ -24,13 +24,18 @@ body {
 }
 
 table {
-  table-layout: fixed;
+  table-layout: auto;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+.data {
+  height: 80vh !important;
+  width: inherit;
+  overflow: scroll;
 }
 
 .celdas{
   font-size: 80%;
 }
 
-.row-table{
-  font-size: 70%;
-}

@@ -18,6 +18,9 @@ export default function Correlacion() {
   const [pdocente, setPdocente] = useState(0);
   const [pestudiantil, setPestudiantil] = useState(0);
 
+  const [p1, setP1] = useState("");
+  const [p2, setP2] = useState("");
+  
   const [tabla, setTabla] = useState(<div></div>);
 
   useEffect(() => {
@@ -54,6 +57,10 @@ export default function Correlacion() {
           <Card>
             <Card.Header>Tabla de contingencia</Card.Header>
             <Card.Body>
+              <p><b>Pregunta Desempeño Docente:</b><br />{p1}</p>
+              <br />
+              <p><b>Pregunta Desempeño Estudiantil:</b><br />{p2}</p>
+              <hr />
               <Table striped bordered hover variant="secondary">
                 <thead>
                   <tr className="table-primary">
@@ -86,10 +93,21 @@ export default function Correlacion() {
 
   const getRespDocente = async (e) => {
     setPdocente("respuesta_" + e.target.value);
+    await fetch("/api/pregunta/" + e.target.value)
+      .then((res) => res.json())
+      .then((data) => {
+        setP1(data);
+      });
+    
   };
 
   const getRespEstudiante = async (e) => {
     setPestudiantil("respuesta_" + (e.target.value - 30));
+    await fetch("/api/pregunta/" + e.target.value)
+      .then((res) => res.json())
+      .then((data) => {
+        setP2(data);
+      });
   };
 
   return (
@@ -102,6 +120,7 @@ export default function Correlacion() {
                 <Card.Header>Correlación Estadistica</Card.Header>
                 <Card.Body>
                   <Form onSubmit={handleSubmit}>
+                    <h5>Desempeño Docente</h5>
                     <Form.Select
                       aria-label="Desempeño Docente"
                       name="docente"
@@ -118,6 +137,7 @@ export default function Correlacion() {
                     </Form.Select>
                     <br />
                     <br />
+                    <h5>Desempeño Estudiantil</h5>
                     <Form.Select
                       aria-label="Desempeño Estudiantil"
                       name="estudiantil"

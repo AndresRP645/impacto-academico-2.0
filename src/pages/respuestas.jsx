@@ -30,11 +30,13 @@ export default function Respuestas() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setAlpha(<>
-      <br />
-      <p>El valor del alpha de cronbach para este data set es:</p>
-      <p>{alphaCronbach(respuestas)}</p>
-    </>);
+    setAlpha(
+      <>
+        <br />
+        <p>El valor del alpha de cronbach para este data set es:</p>
+        <p>{alphaCronbach(respuestas)}</p>
+      </>
+    );
   };
 
   return (
@@ -47,7 +49,7 @@ export default function Respuestas() {
         <Container className="mx-auto text-center" fluid="xxl">
           <Row xxl="auto">
             <Col xxl="auto" className="mx-auto text-center">
-              <Link href="/menu" passHref legacyBehavior>
+              <Link href="/info" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
               <br />
@@ -61,29 +63,39 @@ export default function Respuestas() {
                   </Form>
                   {alpha}
                   <br />
-                  <Table striped bordered hover responsive variant="secondary">
-                    <thead>
-                      <tr className="table-primary">
-                        <th className="table-success"> id </th>
-                        {Array.from({ length: 40 }).map((_, index) => (
-                          <th key={index} ><p className="celdas">P {index + 1}</p></th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {Object.values(respuestas).map((resp, i) => (
-                        <tr key={i}>
-                          <td className="table-info row-table">{i + 1}</td>
-                          {Object.values(resp).map((e, j) => (
-                            <td key={j}>{e}</td>
+                  <div className="data">
+                    <Table
+                      striped
+                      bordered
+                      hover
+                      responsive="lg"
+                      variant="secondary"
+                    >
+                      <thead>
+                        <tr className="table-primary">
+                          <th className="table-success"> id </th>
+                          {Array.from({ length: 40 }).map((_, index) => (
+                            <th key={index}>
+                              <p className="celdas">Pregunta {index + 1}</p>
+                            </th>
                           ))}
                         </tr>
-                      ))}
-                    </tbody>
-                  </Table>
+                      </thead>
+                      <tbody>
+                        {Object.values(respuestas).map((resp, i) => (
+                          <tr key={i}>
+                            <td className="table-info">{i + 1}</td>
+                            {Object.values(resp).map((e, j) => (
+                              <td key={j}>{e}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </Table>
+                  </div>
                 </Card.Body>
               </Card>
-              <Link href="/menu" passHref legacyBehavior>
+              <Link href="/info" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
             </Col>
@@ -94,12 +106,11 @@ export default function Respuestas() {
   );
 }
 
-
-function alphaCronbach(respuestas){
+function alphaCronbach(respuestas) {
   var map = [];
   var sum = [];
   var varp = [];
-  
+
   respuestas.forEach((key, i) => {
     map[i] = [];
     Object.entries(key).forEach((value, j) => {
@@ -107,7 +118,6 @@ function alphaCronbach(respuestas){
     });
     sum[i] = suma(map[i]);
   });
-
 
   var K = map[0].length;
   console.log(K);
@@ -117,7 +127,7 @@ function alphaCronbach(respuestas){
   }
 
   var St = varpSt(sum);
-  return (K/(K-1))*(1-(suma(varp)/St));
+  return (K / (K - 1)) * (1 - suma(varp) / St);
 }
 
 function suma(entry) {
@@ -142,7 +152,7 @@ function varpSi(arr, j) {
     varp += (aux[i] - prom) ** 2;
   }
 
-  varp = varp / (aux.length);
+  varp = varp / aux.length;
 
   return varp;
 }
@@ -158,7 +168,7 @@ function varpSt(aux) {
     varp += (aux[i] - prom) ** 2;
   }
 
-  varp = varp / (aux.length);
+  varp = varp / aux.length;
 
   return varp;
 }
