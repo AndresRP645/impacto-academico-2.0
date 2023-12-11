@@ -76,7 +76,7 @@ export default function DesEstudiantil() {
                           {Array.from({ length: 10 }).map((_, index) => (
                             <th key={index}>
                               {" "}
-                              <p className="celdas">P {index + 1}</p>{" "}
+                              <p className="celdas">Pregunta {index + 1}</p>{" "}
                             </th>
                           ))}
                         </tr>
