@@ -23,15 +23,18 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/api/auth/login", credentials);
-    if (res.status === 200) {
+    try {
+      const res = await axios.post("/api/auth/login", credentials);
+      console.log(res);
       router.push("/materias");
-    } else if (res.status === 401) {
-      alert("Favor de Ingresar tu Nombre Completo");
-    } else if (res.status === 402) {
-      alert(
-        "Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente"
-      );
+    } catch (error) {
+      if (error.response.status === 401) {
+        alert("Favor de Ingresar tu Nombre Completo");
+      } else if (error.response.status === 402) {
+        alert(
+          "Los datos proporcionados no coinciden con el numero de cuenta registrado\n\nFavor de hablar con el encargado si existe algún inconveniente"
+        );
+      }
     }
   };
 
