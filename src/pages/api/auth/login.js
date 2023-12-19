@@ -7,8 +7,8 @@ export default async function handler(req, res) {
     const { cuenta, nombre, carrera } = await req.body;
 
     if (cuenta === 'admin'){
-      if (nombre === 'H3lPd35k'){
-        res.status(408).send('OK');
+      if (nombre === 'helpdesk'){
+        res.status(502).send('OK');
       } else {
         res.status(409).send('Los datos proporcionados no coinciden con el numero de cuenta registrado\n\nFavor de hablar con el encargado si existe algún inconveniente');
       }

@@ -27,10 +27,9 @@ export default function Login() {
       await axios.post("/api/auth/login", credentials);
       router.push("/materias");
       } catch (error) {
-        console.log(error.response);
       if (error.response.status === 406 || error.response.status === 409) {
         alert(error.response.request.response);
-      }  else if (error.response.status === 408) {
+      }  else if (error.response.status === 502) {
         router.push('/menu');
       } else if (error.response.status === 500) {
         alert(
