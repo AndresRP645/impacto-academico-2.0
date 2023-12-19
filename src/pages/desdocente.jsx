@@ -70,7 +70,7 @@ export default function DesDocente() {
                   </Form>
                   {alpha}
                   <br />
-                  <div className="quest">
+                  <div className="quest" id="scroll">
                       <Table 
                       striped
                       bordered
@@ -96,7 +96,7 @@ export default function DesDocente() {
                     </div>
                     <br />
                     <br />
-                  <div className="data">
+                  <div className="data" id="scroll">
                     <Table
                       striped
                       bordered
