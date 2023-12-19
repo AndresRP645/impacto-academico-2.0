@@ -5,7 +5,7 @@ import { Container, Row, Card, Col, Button, Image } from "react-bootstrap";
 export default function Menu() {
   return (
     <>
-      <Layout nav='login' title="Encuesta Impacto Academico">
+      <Layout nav='admin' title="Encuesta Impacto Academico">
         <Container>
           <Row>
             <Col md="4" className="mx-auto p-3 text-center">

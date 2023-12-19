@@ -45,7 +45,19 @@ table {
   overflow: scroll;
 }
 
+.quest {
+  height: 15vh !important;
+  width: inherit;
+  overflow: scroll;
+  margin: auto;
+}
+
 .celdas{
   font-size: 80%;
 }
 
+thead tr th { 
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}

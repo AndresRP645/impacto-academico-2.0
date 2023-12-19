@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 export default function Error404() {
   return (
     <>
-      <Layout nav="login" title="404 Error">
+      <Layout title="404 Error">
       <Container>
           <Row>
             <Col md="3" className="mx-auto text-center">

@@ -47,7 +47,7 @@ export default function Preguntas() {
 
   return (
     <>
-      <Layout nav="1" title="Encuesta Impacto Academico">
+      <Layout nav="logout" title="Encuesta Impacto Academico">
         <Container>
           <Row>
             <Col md="8" className="mx-auto">

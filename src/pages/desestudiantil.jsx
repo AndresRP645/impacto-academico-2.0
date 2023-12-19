@@ -17,12 +17,18 @@ export default function DesEstudiantil() {
   const router = useRouter();
   const [estudiantil, setEstudiantil] = useState([]);
   const [alpha, setAlpha] = useState(<></>);
+  const [pEstudiantil, setPEstudiantil] = useState([]);
 
   useEffect(() => {
     fetch("/api/info/estudiantil")
       .then((res) => res.json())
       .then((data) => {
         setEstudiantil(data);
+      });
+      fetch("/api/data/preguntas")
+      .then((res) => res.json())
+      .then((data) => {
+        setPEstudiantil(data.DesempeñoEstudiantil);
       });
   }, []);
 
@@ -41,17 +47,19 @@ export default function DesEstudiantil() {
   return (
     <>
       <Layout
-        nav="login"
+        nav="admin"
         title="Encuesta Impacto Academico"
         className="mx-auto text-center"
       >
         <Container className="mx-auto text-center">
           <Row>
-            <Col md="12" className="mx-auto text-center">
+            <Col lg="12" className="mx-auto text-center">
               <Link href="/info" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
               <br />
+            </Col>
+            <Col lg="12" className="mx-auto text-center">
               <Card>
                 <Card.Header>Desempeño Estudiantil</Card.Header>
                 <Card.Body>
@@ -62,6 +70,32 @@ export default function DesEstudiantil() {
                   </Form>
                   {alpha}
                   <br />
+                  <div className="quest">
+                      <Table 
+                      striped
+                      bordered
+                      hover
+                      responsive="lg"
+                      variant="secondary"
+                      className="">
+                        <thead>
+                          <tr className="table-primary">
+                            <th className="table-sucess"> N° </th>
+                            <th className="celdas"> Pregunta </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {Object.entries(pEstudiantil).map((e, i) => (
+                          <tr key={i}>
+                            <td className="table-info">{e[0] - 30}</td>
+                              <td>{e[1]}</td>
+                          </tr>
+                        ))}
+                        </tbody>
+                      </Table>
+                    </div>
+                    <br />
+                    <br />
                   <div className="data">
                     <Table
                       striped

@@ -17,12 +17,18 @@ export default function DesDocente() {
   const router = useRouter();
   const [docente, setDocente] = useState([]);
   const [alpha, setAlpha] = useState(<></>);
+  const [pDocente, setPDocente] = useState([]);
 
   useEffect(() => {
     fetch("/api/info/docente")
       .then((res) => res.json())
       .then((data) => {
         setDocente(data);
+      });
+    fetch("/api/data/preguntas")
+      .then((res) => res.json())
+      .then((data) => {
+        setPDocente(data.DesempeñoDocente);
       });
   }, []);
 
@@ -41,17 +47,19 @@ export default function DesDocente() {
   return (
     <>
       <Layout
-        nav="login"
+        nav="admin"
         title="Encuesta Impacto Academico"
         className="mx-auto text-center"
       >
         <Container className="mx-auto text-center">
           <Row>
-            <Col md="12" className="mx-auto text-center">
+            <Col lg="12" className="mx-auto text-center">
               <Link href="/info" passHref legacyBehavior>
                 <a className="btn btn-danger m-4">regresar</a>
               </Link>
               <br />
+            </Col>
+            <Col lg="12" className="mx-auto text-center">
               <Card>
                 <Card.Header>Desempeño Docente</Card.Header>
                 <Card.Body>
@@ -62,6 +70,32 @@ export default function DesDocente() {
                   </Form>
                   {alpha}
                   <br />
+                  <div className="quest">
+                      <Table 
+                      striped
+                      bordered
+                      hover
+                      responsive="lg"
+                      variant="secondary"
+                      className="">
+                        <thead>
+                          <tr className="table-primary">
+                            <th className="table-sucess"> N° </th>
+                            <th className="celdas"> Pregunta </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {Object.entries(pDocente).map((e, i) => (
+                          <tr key={i}>
+                            <td className="table-info">{e[0]}</td>
+                              <td>{e[1]}</td>
+                          </tr>
+                        ))}
+                        </tbody>
+                      </Table>
+                    </div>
+                    <br />
+                    <br />
                   <div className="data">
                     <Table
                       striped

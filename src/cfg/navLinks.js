@@ -1,22 +1,13 @@
-export const login = [
+export const admin = [
     {
       title: "Contestar encuesta",
       path: "/login",
-    },
-    {
-      title: "Ver Datos",
-      path: "/info",
     }
   ];
 
-
-export const logout = [
+  export const logout = [
     {
       title: "Salir",
       path: "/logout",
-    },
-    {
-      title: "Ver Datos",
-      path: "/info",
     }
   ];

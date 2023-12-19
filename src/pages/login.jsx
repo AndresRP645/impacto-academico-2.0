@@ -24,15 +24,17 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/login", credentials);
-      console.log(res);
+      await axios.post("/api/auth/login", credentials);
       router.push("/materias");
     } catch (error) {
-      if (error.response.status === 401) {
-        alert("Favor de Ingresar tu Nombre Completo");
-      } else if (error.response.status === 402) {
+      console.log(error.response.request.response);
+      if (error.response.status === 406 || error.response.status === 409) {
+        alert(error.response.request.response);
+      }  else if (error.response.status === 408) {
+        router.push('/menu');
+      } else if (error.response.status === 500) {
         alert(
-          "Los datos proporcionados no coinciden con el numero de cuenta registrado\n\nFavor de hablar con el encargado si existe algún inconveniente"
+          "No has ingresado todos tus datos"
         );
       }
     }

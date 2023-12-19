@@ -1,15 +1,14 @@
 import Link from "next/link";
 import { Container, Nav, Navbar, Offcanvas } from "react-bootstrap";
-import { login, logout } from "@/cfg/navLinks";
+import { admin, logout } from "@/cfg/navLinks";
 export default function Navigation({ title, nav }) {
   return (
     <>
       <Navbar key="xl" bg="dark" variant="dark" expand="xl" className="mb-3">
         <Container>
-          <Navbar.Brand>
-            <Link href="/" passHref legacyBehavior>
-              <Nav.Link>Inicio</Nav.Link>
-            </Link>
+           <Navbar.Brand> 
+            <h5>{title}</h5>
+              {/*<Link href="/" passHref legacyBehavior> <Nav.Link>Inicio</Nav.Link> </Link> */}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-xxl" />
           <Navbar.Offcanvas
@@ -24,15 +23,15 @@ export default function Navigation({ title, nav }) {
             </Offcanvas.Header>
             <Offcanvas.Body className="justify-content-end">
               <Nav variant="pills">
-                {nav === "login" ? (
+                {nav === "admin" ? (
                   <>
-                    {login.map(({ title, path }, i) => (
+                    {admin.map(({ title, path }, i) => (
                       <Link href={path} passHref legacyBehavior key={i}>
                         <Nav.Link>{title}</Nav.Link>
                       </Link>
                     ))}
                   </>
-                ) : (
+                ) : nav === "logout" ? (
                   <>
                     {logout.map(({ title, path }, i) => (
                       <Link href={path} passHref legacyBehavior key={i}>
@@ -40,6 +39,8 @@ export default function Navigation({ title, nav }) {
                       </Link>
                     ))}
                   </>
+                ) : (
+                  <></>
                 )}
               </Nav>
             </Offcanvas.Body>

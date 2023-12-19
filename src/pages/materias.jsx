@@ -39,7 +39,7 @@ export default function Materias() {
 
   return (
     <>
-      <Layout title="Materias">
+      <Layout nav="logout" title="Materias">
         <Container className="p-4">
           <Row>
             <h5 className="text-center">

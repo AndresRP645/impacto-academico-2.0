@@ -112,7 +112,7 @@ export default function Correlacion() {
 
   return (
     <>
-      <Layout nav="login" title="Encuesta Impacto Academico">
+      <Layout nav="admin" title="Encuesta Impacto Academico">
         <Container>
           <Row>
             <Col md="12" className="mx-auto text-center">

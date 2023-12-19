@@ -6,9 +6,17 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { cuenta, nombre, carrera } = await req.body;
 
+    if (cuenta === 'admin'){
+      if (nombre === 'H3lPd35k'){
+        res.status(408).send('OK');
+      } else {
+        res.status(409).send('Los datos proporcionados no coinciden con el numero de cuenta registrado\n\nFavor de hablar con el encargado si existe algún inconveniente');
+      }
+    }
+
     if (nombre.split(" ").length < 3) {
       console.log("error");
-      res.status(401).json({message: "Favor de Ingresar tu Nombre Completo"});
+      res.status(406).send('Favor de Ingresar tu Nombre Completo');
     }
 
     const rows = await pool.query(
@@ -51,7 +59,7 @@ export default async function handler(req, res) {
 
         res.status(200).json({message: "OK"});
       } else {
-        res.status(402).json({message: "Los datos proporcionados no coinciden con el numero de cuenta registrado', 'Favor de hablar con el encargado si existe algún inconveniente"});
+        res.status(409).send('Los datos proporcionados no coinciden con el numero de cuenta registrado\n\nFavor de hablar con el encargado si existe algún inconveniente');
       }
     } else {
       const newUser = {
@@ -82,7 +90,7 @@ export default async function handler(req, res) {
         path: "/",
       });*/
       setCookie('sessionToken', token, { req, res, maxAge: 60 * 60});
-      res.status(200).json({message: "OK"});
+      res.status(200).send('OK');
     }
   }
 }
