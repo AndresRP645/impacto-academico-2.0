@@ -33,7 +33,7 @@ body {
   border-left-color: #ff00007c;
 }
 
-table {
+.data {
   table-layout: auto;
   word-break: keep-all;
   white-space: nowrap;
@@ -50,6 +50,7 @@ table {
   width: inherit;
   overflow-y: scroll;
   margin: auto;
+  padding: auto;
 }
 
 .celdas{

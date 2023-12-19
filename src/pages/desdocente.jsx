@@ -77,7 +77,7 @@ export default function DesDocente() {
                       hover
                       responsive="lg"
                       variant="secondary"
-                      className="">
+                      className="text-start">
                         <thead>
                           <tr className="table-primary">
                             <th className="table-success"> N° </th>
