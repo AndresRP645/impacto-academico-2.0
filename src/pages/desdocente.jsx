@@ -80,7 +80,7 @@ export default function DesDocente() {
                       className="">
                         <thead>
                           <tr className="table-primary">
-                            <th className="table-sucess"> N° </th>
+                            <th className="table-success"> N° </th>
                             <th className="celdas"> Pregunta </th>
                           </tr>
                         </thead>
