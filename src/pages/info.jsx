@@ -39,7 +39,7 @@ export default function Index() {
               </Card.Header>
               <Card.Body>
               <Link href="/respuestas" passHref legacyBehavior>
-                    <a className="btn btn-info m-4"><Card.Img className="image" src="/exam.png" /></a>
+                    <a className="btn btn-success m-4"><Card.Img className="image" src="/exam.png" /></a>
                   </Link>
               </Card.Body>
             </Card>
