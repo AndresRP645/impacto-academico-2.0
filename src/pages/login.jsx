@@ -14,7 +14,7 @@ export default function Login() {
   const [credentials, setCredentials] = useState({
     cuenta: "",
     nombre: "",
-    carrera: "",
+    carrera: "ISI",
   });
 
   useEffect(() => {
