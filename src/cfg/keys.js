@@ -6,8 +6,8 @@ module.exports = {
         user: process.env.USER || 'root',
         password: process.env.PASSWD || '',
         database: process.env.DB || 'impactoacademico',
-        ssl:{
+        /*ssl:{
             rejectUnauthorized: true
-        }
+        }*/
     }
 }

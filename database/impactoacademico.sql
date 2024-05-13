@@ -1,400 +1,47 @@
-CREATE DATABASE IF NOT EXISTS `impactoacademico`;
+CREATE DATABASE  IF NOT EXISTS `impactoacademico` ;
 USE `impactoacademico`;
 
 DROP TABLE IF EXISTS `Alumnos`;
-CREATE TABLE IF NOT EXISTS `Alumnos` (
+CREATE TABLE `Alumnos` (
   `id` int NOT NULL,
   `Cuenta` int NOT NULL,
   `Nombre` varchar(50) NOT NULL,
-  `password` varchar(200) NOT NULL,
+  `password` varchar(200)  NOT NULL,
   `id_Carrera` varchar(3) NOT NULL,
   PRIMARY KEY (`Cuenta`),
   KEY `id_Carrera` (`id_Carrera`)
-);
+) ;
 
 DROP TABLE IF EXISTS `Carrera`;
-CREATE TABLE IF NOT EXISTS `Carrera` (
+CREATE TABLE `Carrera` (
   `id_Carrera` varchar(3) NOT NULL,
   `nm_Carrera` varchar(50) NOT NULL,
   PRIMARY KEY (`id_Carrera`)
 );
 
-INSERT INTO `Carrera` VALUES
-('ISI', 'Ingeniería en Sistemas Inteligentes'),
-('ITR', 'Ingeniería en Transporte'),
-('LCI', 'Licenciatura en Comercio Internacional'),
-('LES', 'Licenciatura en Educación para la Salud'),
-('LSD', 'Licenciatura en Seguridad Ciudana');
-
 DROP TABLE IF EXISTS `Materias`;
-CREATE TABLE IF NOT EXISTS `Materias` (
+CREATE TABLE `Materias` (
   `id_Materia` int NOT NULL,
   `id_Carrera` varchar(3) NOT NULL,
   `Semestre` int NOT NULL,
-  `Nombre` varchar(200)NOT NULL,
+  `Nombre` varchar(200) NOT NULL,
   PRIMARY KEY (`id_Materia`),
   KEY `id_Carrera` (`id_Carrera`)
 );
 
-INSERT INTO `Materias` VALUES
-(10, 'ISI', 1, 'Psicologia'),
-(11, 'ISI', 1, 'Algebra Superior'),
-(12, 'ISI', 1, 'Calculo I'),
-(13, 'ISI', 1, 'Matematicas Discretas'),
-(14, 'ISI', 1, 'Geometria Analitica'),
-(15, 'ISI', 1, 'Fundamentos de Programacion'),
-(16, 'ISI', 10, 'Taller de Tesis'),
-(17, 'ISI', 10, 'Robotica'),
-(18, 'ISI', 10, 'Logica Difusa'),
-(19, 'ISI', 10, 'Practica Profesional'),
-(20, 'ISI', 10, 'Taller con Weka'),
-(21, 'ISI', 10, 'Taller de Mineria de Datos'),
-(22, 'ISI', 10, 'Redes Neuronales Modulares'),
-(23, 'ISI', 10, 'Razonamiento Basado en Casos'),
-(24, 'ISI', 10, 'Graficacion'),
-(25, 'ISI', 10, 'Programacion con Matlab'),
-(26, 'ISI', 10, 'Agentes Inteligentes'),
-(27, 'ISI', 10, 'Maquinas de Soporte Vectorial'),
-(28, 'ISI', 2, 'Ingles C1'),
-(29, 'ISI', 2, 'Algebra Lineal'),
-(30, 'ISI', 2, 'Calculo II'),
-(31, 'ISI', 2, 'Ecuaciones Diferenciales'),
-(32, 'ISI', 2, 'Lenguajes y Automatas'),
-(33, 'ISI', 2, 'Programacion Orientada a Objetos'),
-(34, 'ISI', 3, 'Ingles C2'),
-(35, 'ISI', 3, 'Calculo III'),
-(36, 'ISI', 3, 'Probabilidad y Estadistica'),
-(37, 'ISI', 3, 'Fisica Basica'),
-(38, 'ISI', 3, 'Estructura de Datos'),
-(39, 'ISI', 3, 'Logica Matematica'),
-(40, 'ISI', 4, 'Electricidad y Magnetismo'),
-(41, 'ISI', 4, 'Quimica'),
-(42, 'ISI', 4, 'Metrologia'),
-(43, 'ISI', 4, 'Organizacion de Archivos'),
-(44, 'ISI', 4, 'Introduccion a la Inteligencia Artificial'),
-(45, 'ISI', 4, 'Psicologia Avanzada'),
-(46, 'ISI', 5, 'Circuitos Electricos'),
-(47, 'ISI', 5, 'Metodos Numericos'),
-(48, 'ISI', 5, 'Lenguaje Ensamblador'),
-(49, 'ISI', 5, 'Programacion Web'),
-(50, 'ISI', 5, 'Fundamentos de Bases de Datos'),
-(51, 'ISI', 5, 'Introduccion al Tratamiento de Imagenes'),
-(52, 'ISI', 6, 'Arquitectura de Computadoras'),
-(53, 'ISI', 6, 'Compiladores'),
-(54, 'ISI', 6, 'Sistemas Basados en Conocimiento'),
-(55, 'ISI', 6, 'Bases de Datos Distribuidas'),
-(56, 'ISI', 6, 'Introduccion al Reconocimiento de Patrones'),
-(57, 'ISI', 6, 'Preparacion de Datos'),
-(58, 'ISI', 7, 'Redes de Computadoras I'),
-(59, 'ISI', 7, 'Sistemas Operativos'),
-(60, 'ISI', 7, 'Ingenieria del Software'),
-(61, 'ISI', 7, 'Arboles de Desicion'),
-(62, 'ISI', 7, 'Mineria de Datos I'),
-(63, 'ISI', 7, 'Data Warehouse I'),
-(64, 'ISI', 7, 'Evaluacion e Interpretacion del Conocimiento'),
-(65, 'ISI', 8, 'Redes de Computadoras II'),
-(66, 'ISI', 8, 'Sistemas Operativos Distribuidos'),
-(67, 'ISI', 8, 'Mineria de Datos II'),
-(68, 'ISI', 8, 'Visualizacion de Datos'),
-(69, 'ISI', 8, 'Redes Neuronales Supervisadas'),
-(70, 'ISI', 8, 'Data Warehouse II'),
-(71, 'ISI', 8, 'Interpretacion de Imagenes'),
-(72, 'ISI', 9, 'Algoritmos de Clasificacion'),
-(73, 'ISI', 9, 'Algoritmos de Agrupamiento'),
-(74, 'ISI', 9, 'Procesamiento de Lenguaje Natural'),
-(75, 'ISI', 9, 'Reconocimiento de Patrones Sintactico-Estructural'),
-(76, 'ISI', 9, 'Redes Neuronales no Supervisadas'),
-(77, 'ISI', 9, 'Algoritmos Geneticos'),
-(78, 'ITR', 1, 'Algebra Superior'),
-(79, 'ITR', 1, 'Expresion Grafica Automatizada'),
-(80, 'ITR', 1, 'Fisica General'),
-(81, 'ITR', 1, 'Taller de expresion escrita'),
-(82, 'ITR', 1, 'Electricidad y magnetismo'),
-(83, 'ITR', 1, 'Lenguaje de programacion'),
-(84, 'ITR', 10, 'Practicas profesionales'),
-(85, 'ITR', 10, 'Programacion de corridas ferroviarias'),
-(86, 'ITR', 10, 'Administracion de empresas ferroviarias'),
-(87, 'ITR', 10, 'Politicas de autotransporte ferroviario'),
-(88, 'ITR', 10, 'Modelos de impacto ambiental del autotransporte ferroviario'),
-(89, 'ITR', 10, 'Taller intermodal del autotransporte ferroviario'),
-(90, 'ITR', 10, 'Sistemas inteligentes del autotransporte ferroviario'),
-(91, 'ITR', 10, 'Control de trafico aereo'),
-(92, 'ITR', 10, 'Administracion de empresas aereas'),
-(93, 'ITR', 10, 'Politicas de autotransporte aereo'),
-(94, 'ITR', 10, 'Modelos de impacto ambiental del autotransporte aereo'),
-(95, 'ITR', 10, 'Taller intermodal del autotransporte aereo'),
-(96, 'ITR', 10, 'Sistemas inteligentes del autotransporte aereo'),
-(97, 'ITR', 10, 'Programacion de corridas maritimas'),
-(98, 'ITR', 10, 'Administracion de empresas maritimas'),
-(99, 'ITR', 10, 'Politicas de autotransporte maritimo'),
-(100, 'ITR', 10, 'Modelos de impacto ambiental del autotransporte maritimo'),
-(101, 'ITR', 10, 'Taller intermodal del autotransporte maritimo'),
-(102, 'ITR', 10, 'Sistemas inteligentes del autotransporte maritimo'),
-(103, 'ITR', 2, 'Calculo'),
-(104, 'ITR', 2, 'Geometria analitica'),
-(105, 'ITR', 2, 'Mecanica'),
-(106, 'ITR', 2, 'Termodinamica'),
-(107, 'ITR', 2, 'Probabilidad y estadistica'),
-(108, 'ITR', 2, 'Ingles C1'),
-(109, 'ITR', 3, 'Optimizacion'),
-(110, 'ITR', 3, 'Geometria descriptiva'),
-(111, 'ITR', 3, 'Topografia'),
-(112, 'ITR', 3, 'Enfoque de sistemas para el transporte'),
-(113, 'ITR', 3, 'Tecnologia vehicular del autotransporte I'),
-(114, 'ITR', 3, 'Ingles C2'),
-(115, 'ITR', 4, 'Ingenieria de transito I'),
-(116, 'ITR', 4, 'Metodologia de la investigacion'),
-(117, 'ITR', 4, 'Hombre y sociedad'),
-(118, 'ITR', 4, 'Tecnologia vehicular del autotransporte II'),
-(119, 'ITR', 4, 'Mantenimiento vehicular'),
-(120, 'ITR', 4, 'Sistemas de informacion geografica'),
-(121, 'ITR', 5, 'Ingenieria de transito II'),
-(122, 'ITR', 5, 'Instalaciones del autotransporte'),
-(123, 'ITR', 5, 'Dise�o geometrico de infraestructura terrestre'),
-(124, 'ITR', 5, 'Sistemas de informacion para el transporte'),
-(125, 'ITR', 5, 'Economia del transporte'),
-(126, 'ITR', 5, 'Hombre y estado'),
-(127, 'ITR', 6, 'Seguridad en el autotransporte'),
-(128, 'ITR', 6, 'Estudios de demanda del autotransporte de pasajeros'),
-(129, 'ITR', 6, 'Legislacion, politicas y organismos gubernamentales del autotransporte de pasajeros'),
-(130, 'ITR', 6, 'Sistemas de transporte masivo'),
-(131, 'ITR', 6, 'Administracion y operacion de empresas del autotransporte de pasajeros'),
-(132, 'ITR', 6, 'Transportes especiales'),
-(133, 'ITR', 7, 'Logistica I'),
-(134, 'ITR', 7, 'Evaluacion de proyectos del autotransporte de pasajeros'),
-(135, 'ITR', 7, 'Estudios de demanda del autotransporte de carga'),
-(136, 'ITR', 7, 'Impacto ambiental del autotransporte'),
-(137, 'ITR', 7, 'Administracion y operacion de empresas del autotransporte de carga'),
-(138, 'ITR', 7, 'Legislacion, politicas y organismos gubernamentales del autotransporte de carga'),
-(139, 'ITR', 8, 'Logistica II '),
-(140, 'ITR', 8, 'Transporte intermodal'),
-(141, 'ITR', 8, 'Evaluacion de proyectos del autotransporte de carga'),
-(142, 'ITR', 8, 'Sistemas inteligentes del autotransporte'),
-(143, 'ITR', 8, 'Transporte urbano e interurbano'),
-(144, 'ITR', 8, 'Logistica internacional'),
-(145, 'ITR', 9, 'Logistica del autotransporte ferroviario'),
-(146, 'ITR', 9, 'Modelos de operacion del autotransporte ferroviario'),
-(147, 'ITR', 9, 'Infraestructura del autotransporte ferroviario'),
-(148, 'ITR', 9, 'Instalaciones del autotransporte ferroviario'),
-(149, 'ITR', 9, 'Tecnologia del autotransporte ferroviario'),
-(150, 'ITR', 9, 'Seguridad del autotransporte ferroviario'),
-(151, 'ITR', 9, 'Evaluacion de proyectos del autotransporte ferroviario'),
-(152, 'ITR', 9, 'Logistica del autotransporte aereo'),
-(153, 'ITR', 9, 'Modelos de operacion del autotransporte aereo'),
-(154, 'ITR', 9, 'Infraestructura del autotransporte aereo'),
-(155, 'ITR', 9, 'Instalaciones del autotransporte aereo'),
-(156, 'ITR', 9, 'Tecnologia del autotransporte aereo'),
-(157, 'ITR', 9, 'Seguridad del autotransporte aereo'),
-(158, 'ITR', 9, 'Evaluacion de proyectos del autotransporte aereo'),
-(159, 'ITR', 9, 'Logistica del autotransporte maritimo'),
-(160, 'ITR', 9, 'Modelos de operacion del autotransporte maritimo'),
-(161, 'ITR', 9, 'Infraestructura del autotransporte maritimo'),
-(162, 'ITR', 9, 'Instalaciones del autotransporte maritimo'),
-(163, 'ITR', 9, 'Tecnologia del autotransporte maritimo'),
-(164, 'ITR', 9, 'Seguridad del autotransporte maritimo'),
-(165, 'ITR', 9, 'Evaluacion de proyectos del autotransporte maritimo'),
-(166, 'LCI', 1, 'Derecho internacional privado'),
-(167, 'LCI', 1, 'Contabilidad basica'),
-(168, 'LCI', 1, 'Estructura de la micro, peque�a y mediana empresa'),
-(169, 'LCI', 1, 'Administracion'),
-(170, 'LCI', 1, 'Microeconomia'),
-(171, 'LCI', 1, 'Teoria del comercio'),
-(172, 'LCI', 1, 'internacional I'),
-(173, 'LCI', 10, 'Seminario de titulacion'),
-(174, 'LCI', 10, 'Investigacion de mercados internacionales'),
-(175, 'LCI', 10, 'Formulacion y evaluacion de proyectos de exportacion'),
-(176, 'LCI', 10, 'Practicas profesionales'),
-(177, 'LCI', 10, 'Promocion y publicidad internacional'),
-(178, 'LCI', 10, 'Estrategias de comunicacion y negociacion internacional'),
-(179, 'LCI', 2, 'Derecho internacional publico'),
-(180, 'LCI', 2, 'Administracion de mercadotecnia'),
-(181, 'LCI', 2, 'Estructura economica y comercial de Mexico'),
-(182, 'LCI', 2, 'Macroeconomia'),
-(183, 'LCI', 2, 'Teoria del comercio internacional II'),
-(184, 'LCI', 2, 'Taller de lectura y redaccion'),
-(185, 'LCI', 2, 'Valores socioculturales'),
-(186, 'LCI', 3, 'Legislacion del comercio exterior'),
-(187, 'LCI', 3, 'Taller de clasificacion arancelaria'),
-(188, 'LCI', 3, 'Administracion internacional I'),
-(189, 'LCI', 3, 'Estructura de las organizaciones internacionales'),
-(190, 'LCI', 3, 'Matematicas aplicadas al comercio internacional I'),
-(191, 'LCI', 3, 'Taller de creditos y cobranzas'),
-(192, 'LCI', 3, 'Ingles C1'),
-(193, 'LCI', 4, 'Taller de incoterms'),
-(194, 'LCI', 4, 'Administracion Internacional II'),
-(195, 'LCI', 4, 'Sistema de administracion aduanal'),
-(196, 'LCI', 4, 'Logistica comercial'),
-(197, 'LCI', 4, 'Matematicas aplicadas al comercio internacional II'),
-(198, 'LCI', 4, 'Estadistica I'),
-(199, 'LCI', 4, 'Ingles C2'),
-(200, 'LCI', 5, 'Auditoria y tratamientos fiscales'),
-(201, 'LCI', 5, 'Matematicas financieras'),
-(202, 'LCI', 5, 'Desarrollo de emprendedores Bloques y regiones del comercio mundial'),
-(203, 'LCI', 5, 'Estadistica II'),
-(204, 'LCI', 5, 'Ingles D1'),
-(205, 'LCI', 5, 'Simulador de negocios internacionales'),
-(206, 'LCI', 5, 'Etica en los negocios'),
-(207, 'LCI', 5, 'Taller de desarrollo humano y creatividad'),
-(208, 'LCI', 6, 'Contabilidad administrativa y comercial'),
-(209, 'LCI', 6, 'Marketing internacional I'),
-(210, 'LCI', 6, 'Tecnicas de promocion internacional'),
-(211, 'LCI', 6, 'Acuerdos, tratados y zonas comerciales'),
-(212, 'LCI', 6, 'Investigacion de operaciones'),
-(213, 'LCI', 6, 'Ingles D2'),
-(214, 'LCI', 7, 'Taller de practicas contractuales'),
-(215, 'LCI', 7, 'Modos de transporte internacional'),
-(216, 'LCI', 7, 'Marketing internacional II'),
-(217, 'LCI', 7, 'Seguros internacionales'),
-(218, 'LCI', 7, 'Psicologia organizacional'),
-(219, 'LCI', 7, 'Programa de financiamiento al comercio exterior'),
-(220, 'LCI', 7, 'Taller de planeacion estrategica'),
-(221, 'LCI', 7, 'Derecho aduanero mexicano I'),
-(222, 'LCI', 8, 'Legislacion Internacional del medio ambiente'),
-(223, 'LCI', 8, 'Alianzas estrategicas en el mercado internacional'),
-(224, 'LCI', 8, 'Politica de precios'),
-(225, 'LCI', 8, 'Instrumentos bursatiles'),
-(226, 'LCI', 8, 'Metodologia de la investigacion documental'),
-(227, 'LCI', 8, 'Comercio electronico'),
-(228, 'LCI', 8, 'Administracion en el desarrollo de productos para mercados globales'),
-(229, 'LCI', 8, 'Derecho aduanero mexicano II'),
-(230, 'LCI', 9, 'Finanzas internacionales'),
-(231, 'LCI', 9, 'Economia financiera y del sector publico'),
-(232, 'LCI', 9, 'Tecnicas de negociacion comercial'),
-(233, 'LCI', 9, 'Taller de metodologia de la investigacion de campo'),
-(234, 'LCI', 9, 'Sistemas de informacion'),
-(235, 'LCI', 9, 'Envase y embalaje'),
-(236, 'LCI', 9, 'Marco juridico mexicano del comercio'),
-(237, 'LES', 1, 'Politicas y programas para la atencion a la salud comunitaria'),
-(238, 'LES', 1, 'Marco normativo para el sector salud'),
-(239, 'LES', 1, 'Poblacion y medio ambiente'),
-(240, 'LES', 1, 'Marginacion, pobreza y estilos de vida'),
-(241, 'LES', 1, 'Antropologia y salud comunitaria'),
-(242, 'LES', 1, 'Cartografia digitalizada'),
-(243, 'LES', 1, 'Configuracion del mundo actual'),
-(244, 'LES', 10, 'Practica integral comunitaria III'),
-(245, 'LES', 10, 'Practica integral en instituciones '),
-(246, 'LES', 2, 'Factores prenatales y promocion de la salud'),
-(247, 'LES', 2, 'Nutricion, consumo y riesgos para la salud'),
-(248, 'LES', 2, 'Sistemas de informacion para alerta temprana en salud'),
-(249, 'LES', 2, 'Medio ambiente y promocion de la salud'),
-(250, 'LES', 2, 'Computacion 1'),
-(251, 'LES', 2, 'Ingles C1'),
-(252, 'LES', 3, 'Prevencion y promocion de la salud en recien nacidos'),
-(253, 'LES', 3, 'Genetica y salud'),
-(254, 'LES', 3, 'Sociodemografia y salud I'),
-(255, 'LES', 3, 'Estrategias de aprendizaje para grupos y comunidades'),
-(256, 'LES', 3, 'Computacion 2'),
-(257, 'LES', 3, 'Ingles C2'),
-(258, 'LES', 4, 'Prevencion y promocion de la salud en la infancia'),
-(259, 'LES', 4, 'Sociodemografia y salud II'),
-(260, 'LES', 4, 'Comunicacion para la salud I'),
-(261, 'LES', 4, 'Didactica y pedagogia para la salud'),
-(262, 'LES', 4, 'Sociologia de la salud'),
-(263, 'LES', 4, 'Redes sociales y promocion de la salud'),
-(264, 'LES', 4, 'Desarrollo comunitario y redes sociales'),
-(265, 'LES', 4, 'Globalizacion y salud'),
-(266, 'LES', 5, 'Promocion de la salud adolescente y juvenil I'),
-(267, 'LES', 5, 'Familia y salud comunitaria'),
-(268, 'LES', 5, 'Comunicacion para la salud II'),
-(269, 'LES', 5, 'Educacion y salud I'),
-(270, 'LES', 5, 'Calidad de vida y salud'),
-(271, 'LES', 5, 'Dise�o y gestion de proyectos'),
-(272, 'LES', 6, 'Promocion de la salud adolescente y juvenil II'),
-(273, 'LES', 6, 'Estilos de vida y riesgos en la poblacion adulta'),
-(274, 'LES', 6, 'Sistemas de informacion en salud I'),
-(275, 'LES', 6, 'Perspectiva de genero y salud'),
-(276, 'LES', 6, 'Educacion y salud II'),
-(277, 'LES', 6, 'Multiculturalismo y salud'),
-(278, 'LES', 7, 'Bioetica y promocion de la salud I'),
-(279, 'LES', 7, 'Sociodemografia, tercera edad y salud'),
-(280, 'LES', 7, 'Sistemas de informacion en salud II'),
-(281, 'LES', 7, 'Medios de comunicacion y salud'),
-(282, 'LES', 7, 'Migracion, salud y enfermedades'),
-(283, 'LES', 7, 'Estratificacion, desigualdad y movilidad social'),
-(284, 'LES', 8, 'Bioetica y promocion de la salud II'),
-(285, 'LES', 8, 'Practica integral comunitaria I'),
-(286, 'LES', 8, 'Seminario de titulacion I'),
-(287, 'LES', 8, 'Gestion para la salud comunitaria I'),
-(288, 'LES', 8, 'Derechos humanos y salud'),
-(289, 'LES', 8, 'Comunicacion regional'),
-(290, 'LES', 9, 'Practica integral comunitaria II'),
-(291, 'LES', 9, 'Seminario de titulacion II'),
-(292, 'LES', 9, 'Gestion para salud comunitaria II'),
-(293, 'LES', 9, 'Mercadotecnia social'),
-(294, 'LES', 9, 'Educacion y capacitacion'),
-(295, 'LSD', 1, 'Introduccion al estudio del Derecho'),
-(296, 'LSD', 1, 'Teoria del riesgo e inseguridad social'),
-(297, 'LSD', 1, 'Metodos cualitativos de investigacion'),
-(298, 'LSD', 1, 'Probabilidad y estadistica'),
-(299, 'LSD', 1, 'Sociologia e inseguridad'),
-(300, 'LSD', 1, 'Historia de las politicas en seguridad en Mexico'),
-(301, 'LSD', 10, 'Practica profesional'),
-(302, 'LSD', 2, 'Comunicacion profesiona'),
-(303, 'LSD', 2, 'Entrevista en Seguridad'),
-(304, 'LSD', 2, 'Derecho constitucional'),
-(305, 'LSD', 2, 'Cultura, violencia y delincuencia en Mexico'),
-(306, 'LSD', 2, 'Criminologia'),
-(307, 'LSD', 2, 'Prevencion del delito'),
-(308, 'LSD', 2, 'Manejo de equipo de computo, redes e internet'),
-(309, 'LSD', 3, 'Casuistica de los derechos humanos'),
-(310, 'LSD', 3, 'Ingles C1'),
-(311, 'LSD', 3, 'Analisis economico del sistema de justicia penal'),
-(312, 'LSD', 3, 'Derecho pena'),
-(313, 'LSD', 3, 'Teorias de la comunicacion y Seguridad Ciudadana'),
-(314, 'LSD', 3, 'Estadistica no parametrica'),
-(315, 'LSD', 3, 'Desarrollo de politicas en Seguridad'),
-(316, 'LSD', 4, 'Deontologia en la Seguridad Ciudadana'),
-(317, 'LSD', 4, 'Ingles C2'),
-(318, 'LSD', 4, 'Evaluacion de programas sociales'),
-(319, 'LSD', 4, 'Modeos lineales'),
-(320, 'LSD', 4, 'Modelos de gestion y gerencia en Seguridad Ciudadana'),
-(321, 'LSD', 4, 'Derecho procesal penal'),
-(322, 'LSD', 5, 'Dilemas y responsabilidad profesional'),
-(323, 'LSD', 5, 'Globalizacion, geopolitica y Seguridad Ciudadana'),
-(324, 'LSD', 5, 'Sistemas de informacion geografica'),
-(325, 'LSD', 5, 'Planeacion prospectiva'),
-(326, 'LSD', 5, 'Marco normativo en Seguridad Ciudadana'),
-(327, 'LSD', 5, 'Psicologia social'),
-(328, 'LSD', 5, 'Antropologia social'),
-(329, 'LSD', 5, 'Dise�o y evaluacion de proyectos'),
-(330, 'LSD', 6, 'Bases de medicina forense'),
-(331, 'LSD', 6, 'Sociologia criminologica'),
-(332, 'LSD', 6, 'Desarrollo urbano y demografia para la Seguridad'),
-(333, 'LSD', 6, 'Policia'),
-(334, 'LSD', 6, 'Modelos de seguridad'),
-(335, 'LSD', 6, 'Marco normativo en administracion de justicia'),
-(336, 'LSD', 6, 'Grupos vulnerables'),
-(337, 'LSD', 7, 'Formas alternativas de solucion de conflictos'),
-(338, 'LSD', 7, 'Psicologia criminologica'),
-(339, 'LSD', 7, 'Reingenieria de procesos'),
-(340, 'LSD', 7, 'Politicas comparadas en seguridad publica y justicia penal'),
-(341, 'LSD', 7, 'Politica criminologica'),
-(342, 'LSD', 7, 'Programas en prevencion del delito'),
-(343, 'LSD', 7, 'Inteligencia criminologica'),
-(344, 'LSD', 7, 'Administracion publica y Seguridad Ciudadana'),
-(345, 'LSD', 8, 'Criminalistica de campo'),
-(346, 'LSD', 8, 'Victimologia'),
-(347, 'LSD', 8, 'Analisis delictivo'),
-(348, 'LSD', 8, 'Penologia y arbitrio judicial'),
-(349, 'LSD', 8, 'Criminalidad en Mexico'),
-(350, 'LSD', 8, 'Modelos operativos de intervencion'),
-(351, 'LSD', 8, 'Delincuencia organizada'),
-(352, 'LSD', 8, 'Metodos de investigacion ministerial 1'),
-(353, 'LSD', 8, 'Contraloria social'),
-(354, 'LSD', 8, 'Seguridad Ciudadana: teoria y reforma del Estado'),
-(355, 'LSD', 9, 'Criminalistica de laboratorio'),
-(356, 'LSD', 9, 'Sistema acusatorio'),
-(357, 'LSD', 9, 'Formas especificas de violencia y delincuencia en Mexico'),
-(358, 'LSD', 9, 'Informpatica en seguridad publica y justicia penal'),
-(359, 'LSD', 9, 'Diagnostico y prediccion de la violencia y delincuencia'),
-(360, 'LSD', 9, 'Marco normativo en prevencion del delito'),
-(361, 'LSD', 9, 'Metodos de investigacion ministerial 2'),
-(362, 'LSD', 9, 'Marco normativo en procuracion de justicia'),
-(363, 'LSD', 9, 'Problemas contemporaneos en seguridad'),
-(364, 'LSD', 9, 'Participacion social en Seguridad Ciudadana');
+DROP TABLE IF EXISTS `Pregunta_type`;
+CREATE TABLE `Pregunta_type` (
+  `id_Type` int NOT NULL,
+  `nm_Type` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_Type`)
+);
+
+--
+-- Table structure for table `Preguntas`
+--
 
 DROP TABLE IF EXISTS `Preguntas`;
-CREATE TABLE IF NOT EXISTS `Preguntas` (
+CREATE TABLE `Preguntas` (
   `id_Pregunta` int NOT NULL,
   `id_Type` int NOT NULL,
   `Pregunta` varchar(200) NOT NULL,
@@ -402,64 +49,8 @@ CREATE TABLE IF NOT EXISTS `Preguntas` (
   KEY `id_Type` (`id_Type`)
 );
 
-INSERT INTO `Preguntas` VALUES
-(1, 1, 'El profesor evidencia que ha preparado las clases con anticipación'),
-(2, 1, 'El profesor demuestra dominio sobre el tema en las explicaciones'),
-(3, 1, 'El profesor emplea variedad de ayudas audiovisuales (multimedia, diapositivas, videos, etc.)'),
-(4, 1, 'El profesor aplica técnicas y estrategias de evaluación'),
-(5, 1, 'El profesor se interesa por los y las estudiantes que demuestran problemas en aprender los temas de estudio'),
-(6, 1, 'El profesor demuestra que conoce la clase'),
-(7, 1, 'El profesor explica temas con ejemplos de la actualidad'),
-(8, 1, 'El profesor utiliza variedad de recursos de enseñanza (demostraciones, lecturas, trabajo en grupo, etc.)'),
-(9, 1, 'El o los procedimiento(s) de evaluación permite al alumno reflejar sus conocimientos'),
-(10, 1, 'El profesor da respuestas claras a las dudas de los estudiantes'),
-(11, 1, 'Los objetivos del curso se definen anticipadamente'),
-(12, 1, 'El profesor muestra dominio de los temas tratados'),
-(13, 1, 'El profesor crea un ambiente propicio para motivar la participación de los alumnos'),
-(14, 1, 'El profesor tiene una forma de enseñar que facilita la comprensión de la materia'),
-(15, 1, 'El profesor elabora los exámenes para sintetizar efectivamente la materia del curso'),
-(16, 1, 'El profesor trata de acercarse y conversar con los estudiantes antes y después de clase'),
-(17, 1, 'El profesor resume y enfatiza los aspectos claves de cada lección'),
-(18, 1, 'El profesor integra conocimientos teóricos con los prácticos'),
-(19, 1, 'El profesor tiene su forma o técnica de enseñar que facilita la comprensión de la materia'),
-(20, 1, 'El profesor es imparcial a la hora de evaluar y calificar (exámenes, tareas, asignaciones, otros)'),
-(21, 1, 'El profesor demuestra creatividad en las actividades de la clase'),
-(22, 1, 'El profesor demuestra seguridad y confianza en lo que explica'),
-(23, 1, 'El profesor realiza actividades prácticas, demostrativas y vivenciales para que los alumnos conozcan donde pueden aplicar los conocimientos'),
-(24, 1, 'El profesor genera actividades en grupo que conlleven a objetivos comunes'),
-(25, 1, 'El profesor se mantiene activo y dinámico cuando dirige este curso'),
-(26, 1, 'El profesor planifica las actividades académicas'),
-(27, 1, 'El profesor transmite sus conocimientos con entusiasmo por su asignatura'),
-(28, 1, 'El profesor los recursos didácticos son acordes con los temas'),
-(29, 1, 'El profesor genera retroalimentación en los exámenes, calificaciones y materiales que le ayudan a comprender el contenido de la clase'),
-(30, 1, 'El profesor expresa asertivamente, las propias ideas y escucha las ajenas'),
-(31, 2, 'Asistí a todas las clases de la semana'),
-(32, 2, 'Estoy satisfecho con los aprendizajes obtenidos después de cada clase'),
-(33, 2, 'Vivo un ambiente de respeto en el salón de clases'),
-(34, 2, 'Asisto puntualmente a las clases'),
-(35, 2, 'Atiendo las explicaciones que da el profesor'),
-(36, 2, 'El profesor resolvió todas mis dudas'),
-(37, 2, 'Considero adecuado que las mujeres estudien ingeniería'),
-(38, 2, 'Realizo las tareas y trabajos que se plantean en clase y aquellas/os extraclase'),
-(39, 2, 'Las opiniones y soluciones de mis compañeros (hombres) son una aportación importante para la clase'),
-(40, 2, 'Las opiniones y soluciones de mis compañeras (mujeres) son una aportación importante para la clase'),
-(41, 3, 'Recomendarías a otras personas estudiar Ingeniería en Sistemas Inteligentes en la UAEMEX'),
-(42, 3, 'Te sientes identificado con la carrera y su plan de estudios');
-
-DROP TABLE IF EXISTS `Pregunta_type`;
-CREATE TABLE IF NOT EXISTS `Pregunta_type` (
-  `id_Type` int NOT NULL,
-  `nm_Type` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_Type`)
-);
-
-INSERT INTO `Pregunta_type` VALUES
-(1, 'Desempeño Docente'),
-(2, 'Desempeño Estudiantil'),
-(3, 'Identidad Institucional');
-
 DROP TABLE IF EXISTS `RespDsmpDcnte`;
-CREATE TABLE IF NOT EXISTS `RespDsmpDcnte` (
+CREATE TABLE `RespDsmpDcnte` (
   `id_RespDcnte` int NOT NULL AUTO_INCREMENT,
   `id_Alumno` int NOT NULL,
   `id_Materia` int NOT NULL,
@@ -499,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `RespDsmpDcnte` (
 );
 
 DROP TABLE IF EXISTS `RespDsmpEstdtl`;
-CREATE TABLE IF NOT EXISTS `RespDsmpEstdtl` (
+CREATE TABLE `RespDsmpEstdtl` (
   `id_RespDsmpEstdtl` int NOT NULL AUTO_INCREMENT,
   `id_Alumno` int NOT NULL,
   `id_Materia` int NOT NULL,
@@ -519,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `RespDsmpEstdtl` (
 );
 
 DROP TABLE IF EXISTS `RespIdntInst`;
-CREATE TABLE IF NOT EXISTS `RespIdntInst` (
+CREATE TABLE `RespIdntInst` (
   `id_RespIndtInst` int NOT NULL AUTO_INCREMENT,
   `id_Alumno` int NOT NULL,
   `respuesta_1` int NOT NULL,
@@ -529,37 +120,27 @@ CREATE TABLE IF NOT EXISTS `RespIdntInst` (
 );
 
 DROP TABLE IF EXISTS `sessions`;
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `expires` int UNSIGNED NOT NULL,
-  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
+CREATE TABLE `sessions` (
+  `session_id` varchar(128) NOT NULL,
+  `expires` int unsigned NOT NULL,
+  `data` mediumtext,
   PRIMARY KEY (`session_id`)
 );
 
-INSERT INTO `sessions` VALUES
-('FOTKXaiC4x6uDf-lL_Jj49t9PcIVawWV', 1669531258, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{}}'),
-('XCuO3-z_3Eg4mwDitKVPic0jZ-JlAr1j', 1669530643, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{\"success\":[\"Favor de resporder el siguiente cuestionario\"]},\"passport\":{\"user\":0}}'),
-('e6nLncC4gAMMAOVE54D-kz5Hk5-zcWdr', 1669531127, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{\"success\":[\"Favor de resporder el siguiente cuestionario\"]},\"passport\":{\"user\":0}}'),
-('eiPqwRaIxhpM_qdRU5fBMQkJ14SmRel4', 1669528103, '{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{}}');
+INSERT INTO `Alumnos` VALUES (1615792,1615792,'Angel Buendía Calzada','$2a$10$oBjomEwnzHXRC7qzqQkDqOH8wXKT/z9jgCXDvFzx4uacA8Qxn4N4G','ISI'),(1670978,1670978,'Andres Rosales Paredes','$2a$10$iTeWuHLmoRO5Z4679g5wy.3/FqGfBy1a5t7/2.cTQzyFFd0ywcINS','ISI'),(1771111,1771111,'Edgar Salazar Ornelas','$2a$10$WurEW2Po0dtHZH26oNvhLOYcGCkyeYCPeUZhaLEl9qcTZk.fyTojK','ISI'),(1779568,1779568,'gutierrotos piernas cortas','$2a$10$Prq9dYK0cfBq7hTfhB1Jnu5mJanWXwnp1pxEWHC0xv8rUCTMwD.RO','ISI'),(1970299,1970299,'Cristhian Ivan Garcia Maldonado ','$2a$10$c0PTJeNHhvxXWmy5Hnxkfe0q.3OhmQcTVZa/7t3Svbp5ZFpUKuWwW','ISI'),(1970370,1970370,'David Velasco Patiño ','$2a$10$d.A8D0CW8Z3dt8Rli8RhIOzxslGk1B.3q2jxoMdXub/7OQqbyZjFe','ISI');
 
+INSERT INTO `Carrera` VALUES ('ISI','Ingeniería en Sistemas Inteligentes'),('ITR','Ingeniería en Transporte'),('LCI','Licenciatura en Comercio Internacional'),('LES','Licenciatura en Educación para la Salud'),('LSD','Licenciatura en Seguridad Ciudana');
 
-ALTER TABLE `Alumnos`
-  ADD CONSTRAINT `Alumnos_ibfk_1` FOREIGN KEY (`id_Carrera`) REFERENCES `Carrera` (`id_Carrera`);
+INSERT INTO `Materias` VALUES (10,'ISI',1,'Psicologia'),(11,'ISI',1,'Algebra Superior'),(12,'ISI',1,'Calculo I'),(13,'ISI',1,'Matematicas Discretas'),(14,'ISI',1,'Geometria Analitica'),(15,'ISI',1,'Fundamentos de Programacion'),(16,'ISI',10,'Taller de Tesis'),(17,'ISI',10,'Robotica'),(18,'ISI',10,'Logica Difusa'),(19,'ISI',10,'Practica Profesional'),(20,'ISI',10,'Taller con Weka'),(21,'ISI',10,'Taller de Mineria de Datos'),(22,'ISI',10,'Redes Neuronales Modulares'),(23,'ISI',10,'Razonamiento Basado en Casos'),(24,'ISI',10,'Graficacion'),(25,'ISI',10,'Programacion con Matlab'),(26,'ISI',10,'Agentes Inteligentes'),(27,'ISI',10,'Maquinas de Soporte Vectorial'),(28,'ISI',2,'Ingles C1'),(29,'ISI',2,'Algebra Lineal'),(30,'ISI',2,'Calculo II'),(31,'ISI',2,'Ecuaciones Diferenciales'),(32,'ISI',2,'Lenguajes y Automatas'),(33,'ISI',2,'Programacion Orientada a Objetos'),(34,'ISI',3,'Ingles C2'),(35,'ISI',3,'Calculo III'),(36,'ISI',3,'Probabilidad y Estadistica'),(37,'ISI',3,'Fisica Basica'),(38,'ISI',3,'Estructura de Datos'),(39,'ISI',3,'Logica Matematica'),(40,'ISI',4,'Electricidad y Magnetismo'),(41,'ISI',4,'Quimica'),(42,'ISI',4,'Metrologia'),(43,'ISI',4,'Organizacion de Archivos'),(44,'ISI',4,'Introduccion a la Inteligencia Artificial'),(45,'ISI',4,'Psicologia Avanzada'),(46,'ISI',5,'Circuitos Electricos'),(47,'ISI',5,'Metodos Numericos'),(48,'ISI',5,'Lenguaje Ensamblador'),(49,'ISI',5,'Programacion Web'),(50,'ISI',5,'Fundamentos de Bases de Datos'),(51,'ISI',5,'Introduccion al Tratamiento de Imagenes'),(52,'ISI',6,'Arquitectura de Computadoras'),(53,'ISI',6,'Compiladores'),(54,'ISI',6,'Sistemas Basados en Conocimiento'),(55,'ISI',6,'Bases de Datos Distribuidas'),(56,'ISI',6,'Introduccion al Reconocimiento de Patrones'),(57,'ISI',6,'Preparacion de Datos'),(58,'ISI',7,'Redes de Computadoras I'),(59,'ISI',7,'Sistemas Operativos'),(60,'ISI',7,'Ingenieria del Software'),(61,'ISI',7,'Arboles de Desicion'),(62,'ISI',7,'Mineria de Datos I'),(63,'ISI',7,'Data Warehouse I'),(64,'ISI',7,'Evaluacion e Interpretacion del Conocimiento'),(65,'ISI',8,'Redes de Computadoras II'),(66,'ISI',8,'Sistemas Operativos Distribuidos'),(67,'ISI',8,'Mineria de Datos II'),(68,'ISI',8,'Visualizacion de Datos'),(69,'ISI',8,'Redes Neuronales Supervisadas'),(70,'ISI',8,'Data Warehouse II'),(71,'ISI',8,'Interpretacion de Imagenes'),(72,'ISI',9,'Algoritmos de Clasificacion'),(73,'ISI',9,'Algoritmos de Agrupamiento'),(74,'ISI',9,'Procesamiento de Lenguaje Natural'),(75,'ISI',9,'Reconocimiento de Patrones Sintactico-Estructural'),(76,'ISI',9,'Redes Neuronales no Supervisadas'),(77,'ISI',9,'Algoritmos Geneticos'),(78,'ITR',1,'Algebra Superior'),(79,'ITR',1,'Expresion Grafica Automatizada'),(80,'ITR',1,'Fisica General'),(81,'ITR',1,'Taller de expresion escrita'),(82,'ITR',1,'Electricidad y magnetismo'),(83,'ITR',1,'Lenguaje de programacion'),(84,'ITR',10,'Practicas profesionales'),(85,'ITR',10,'Programacion de corridas ferroviarias'),(86,'ITR',10,'Administracion de empresas ferroviarias'),(87,'ITR',10,'Politicas de autotransporte ferroviario'),(88,'ITR',10,'Modelos de impacto ambiental del autotransporte ferroviario'),(89,'ITR',10,'Taller intermodal del autotransporte ferroviario'),(90,'ITR',10,'Sistemas inteligentes del autotransporte ferroviario'),(91,'ITR',10,'Control de trafico aereo'),(92,'ITR',10,'Administracion de empresas aereas'),(93,'ITR',10,'Politicas de autotransporte aereo'),(94,'ITR',10,'Modelos de impacto ambiental del autotransporte aereo'),(95,'ITR',10,'Taller intermodal del autotransporte aereo'),(96,'ITR',10,'Sistemas inteligentes del autotransporte aereo'),(97,'ITR',10,'Programacion de corridas maritimas'),(98,'ITR',10,'Administracion de empresas maritimas'),(99,'ITR',10,'Politicas de autotransporte maritimo'),(100,'ITR',10,'Modelos de impacto ambiental del autotransporte maritimo'),(101,'ITR',10,'Taller intermodal del autotransporte maritimo'),(102,'ITR',10,'Sistemas inteligentes del autotransporte maritimo'),(103,'ITR',2,'Calculo'),(104,'ITR',2,'Geometria analitica'),(105,'ITR',2,'Mecanica'),(106,'ITR',2,'Termodinamica'),(107,'ITR',2,'Probabilidad y estadistica'),(108,'ITR',2,'Ingles C1'),(109,'ITR',3,'Optimizacion'),(110,'ITR',3,'Geometria descriptiva'),(111,'ITR',3,'Topografia'),(112,'ITR',3,'Enfoque de sistemas para el transporte'),(113,'ITR',3,'Tecnologia vehicular del autotransporte I'),(114,'ITR',3,'Ingles C2'),(115,'ITR',4,'Ingenieria de transito I'),(116,'ITR',4,'Metodologia de la investigacion'),(117,'ITR',4,'Hombre y sociedad'),(118,'ITR',4,'Tecnologia vehicular del autotransporte II'),(119,'ITR',4,'Mantenimiento vehicular'),(120,'ITR',4,'Sistemas de informacion geografica'),(121,'ITR',5,'Ingenieria de transito II'),(122,'ITR',5,'Instalaciones del autotransporte'),(123,'ITR',5,'Dise�o geometrico de infraestructura terrestre'),(124,'ITR',5,'Sistemas de informacion para el transporte'),(125,'ITR',5,'Economia del transporte'),(126,'ITR',5,'Hombre y estado'),(127,'ITR',6,'Seguridad en el autotransporte'),(128,'ITR',6,'Estudios de demanda del autotransporte de pasajeros'),(129,'ITR',6,'Legislacion, politicas y organismos gubernamentales del autotransporte de pasajeros'),(130,'ITR',6,'Sistemas de transporte masivo'),(131,'ITR',6,'Administracion y operacion de empresas del autotransporte de pasajeros'),(132,'ITR',6,'Transportes especiales'),(133,'ITR',7,'Logistica I'),(134,'ITR',7,'Evaluacion de proyectos del autotransporte de pasajeros'),(135,'ITR',7,'Estudios de demanda del autotransporte de carga'),(136,'ITR',7,'Impacto ambiental del autotransporte'),(137,'ITR',7,'Administracion y operacion de empresas del autotransporte de carga'),(138,'ITR',7,'Legislacion, politicas y organismos gubernamentales del autotransporte de carga'),(139,'ITR',8,'Logistica II '),(140,'ITR',8,'Transporte intermodal'),(141,'ITR',8,'Evaluacion de proyectos del autotransporte de carga'),(142,'ITR',8,'Sistemas inteligentes del autotransporte'),(143,'ITR',8,'Transporte urbano e interurbano'),(144,'ITR',8,'Logistica internacional'),(145,'ITR',9,'Logistica del autotransporte ferroviario'),(146,'ITR',9,'Modelos de operacion del autotransporte ferroviario'),(147,'ITR',9,'Infraestructura del autotransporte ferroviario'),(148,'ITR',9,'Instalaciones del autotransporte ferroviario'),(149,'ITR',9,'Tecnologia del autotransporte ferroviario'),(150,'ITR',9,'Seguridad del autotransporte ferroviario'),(151,'ITR',9,'Evaluacion de proyectos del autotransporte ferroviario'),(152,'ITR',9,'Logistica del autotransporte aereo'),(153,'ITR',9,'Modelos de operacion del autotransporte aereo'),(154,'ITR',9,'Infraestructura del autotransporte aereo'),(155,'ITR',9,'Instalaciones del autotransporte aereo'),(156,'ITR',9,'Tecnologia del autotransporte aereo'),(157,'ITR',9,'Seguridad del autotransporte aereo'),(158,'ITR',9,'Evaluacion de proyectos del autotransporte aereo'),(159,'ITR',9,'Logistica del autotransporte maritimo'),(160,'ITR',9,'Modelos de operacion del autotransporte maritimo'),(161,'ITR',9,'Infraestructura del autotransporte maritimo'),(162,'ITR',9,'Instalaciones del autotransporte maritimo'),(163,'ITR',9,'Tecnologia del autotransporte maritimo'),(164,'ITR',9,'Seguridad del autotransporte maritimo'),(165,'ITR',9,'Evaluacion de proyectos del autotransporte maritimo'),(166,'LCI',1,'Derecho internacional privado'),(167,'LCI',1,'Contabilidad basica'),(168,'LCI',1,'Estructura de la micro, peque�a y mediana empresa'),(169,'LCI',1,'Administracion'),(170,'LCI',1,'Microeconomia'),(171,'LCI',1,'Teoria del comercio'),(172,'LCI',1,'internacional I'),(173,'LCI',10,'Seminario de titulacion'),(174,'LCI',10,'Investigacion de mercados internacionales'),(175,'LCI',10,'Formulacion y evaluacion de proyectos de exportacion'),(176,'LCI',10,'Practicas profesionales'),(177,'LCI',10,'Promocion y publicidad internacional'),(178,'LCI',10,'Estrategias de comunicacion y negociacion internacional'),(179,'LCI',2,'Derecho internacional publico'),(180,'LCI',2,'Administracion de mercadotecnia'),(181,'LCI',2,'Estructura economica y comercial de Mexico'),(182,'LCI',2,'Macroeconomia'),(183,'LCI',2,'Teoria del comercio internacional II'),(184,'LCI',2,'Taller de lectura y redaccion'),(185,'LCI',2,'Valores socioculturales'),(186,'LCI',3,'Legislacion del comercio exterior'),(187,'LCI',3,'Taller de clasificacion arancelaria'),(188,'LCI',3,'Administracion internacional I'),(189,'LCI',3,'Estructura de las organizaciones internacionales'),(190,'LCI',3,'Matematicas aplicadas al comercio internacional I'),(191,'LCI',3,'Taller de creditos y cobranzas'),(192,'LCI',3,'Ingles C1'),(193,'LCI',4,'Taller de incoterms'),(194,'LCI',4,'Administracion Internacional II'),(195,'LCI',4,'Sistema de administracion aduanal'),(196,'LCI',4,'Logistica comercial'),(197,'LCI',4,'Matematicas aplicadas al comercio internacional II'),(198,'LCI',4,'Estadistica I'),(199,'LCI',4,'Ingles C2'),(200,'LCI',5,'Auditoria y tratamientos fiscales'),(201,'LCI',5,'Matematicas financieras'),(202,'LCI',5,'Desarrollo de emprendedores Bloques y regiones del comercio mundial'),(203,'LCI',5,'Estadistica II'),(204,'LCI',5,'Ingles D1'),(205,'LCI',5,'Simulador de negocios internacionales'),(206,'LCI',5,'Etica en los negocios'),(207,'LCI',5,'Taller de desarrollo humano y creatividad'),(208,'LCI',6,'Contabilidad administrativa y comercial'),(209,'LCI',6,'Marketing internacional I'),(210,'LCI',6,'Tecnicas de promocion internacional'),(211,'LCI',6,'Acuerdos, tratados y zonas comerciales'),(212,'LCI',6,'Investigacion de operaciones'),(213,'LCI',6,'Ingles D2'),(214,'LCI',7,'Taller de practicas contractuales'),(215,'LCI',7,'Modos de transporte internacional'),(216,'LCI',7,'Marketing internacional II'),(217,'LCI',7,'Seguros internacionales'),(218,'LCI',7,'Psicologia organizacional'),(219,'LCI',7,'Programa de financiamiento al comercio exterior'),(220,'LCI',7,'Taller de planeacion estrategica'),(221,'LCI',7,'Derecho aduanero mexicano I'),(222,'LCI',8,'Legislacion Internacional del medio ambiente'),(223,'LCI',8,'Alianzas estrategicas en el mercado internacional'),(224,'LCI',8,'Politica de precios'),(225,'LCI',8,'Instrumentos bursatiles'),(226,'LCI',8,'Metodologia de la investigacion documental'),(227,'LCI',8,'Comercio electronico'),(228,'LCI',8,'Administracion en el desarrollo de productos para mercados globales'),(229,'LCI',8,'Derecho aduanero mexicano II'),(230,'LCI',9,'Finanzas internacionales'),(231,'LCI',9,'Economia financiera y del sector publico'),(232,'LCI',9,'Tecnicas de negociacion comercial'),(233,'LCI',9,'Taller de metodologia de la investigacion de campo'),(234,'LCI',9,'Sistemas de informacion'),(235,'LCI',9,'Envase y embalaje'),(236,'LCI',9,'Marco juridico mexicano del comercio'),(237,'LES',1,'Politicas y programas para la atencion a la salud comunitaria'),(238,'LES',1,'Marco normativo para el sector salud'),(239,'LES',1,'Poblacion y medio ambiente'),(240,'LES',1,'Marginacion, pobreza y estilos de vida'),(241,'LES',1,'Antropologia y salud comunitaria'),(242,'LES',1,'Cartografia digitalizada'),(243,'LES',1,'Configuracion del mundo actual'),(244,'LES',10,'Practica integral comunitaria III'),(245,'LES',10,'Practica integral en instituciones '),(246,'LES',2,'Factores prenatales y promocion de la salud'),(247,'LES',2,'Nutricion, consumo y riesgos para la salud'),(248,'LES',2,'Sistemas de informacion para alerta temprana en salud'),(249,'LES',2,'Medio ambiente y promocion de la salud'),(250,'LES',2,'Computacion 1'),(251,'LES',2,'Ingles C1'),(252,'LES',3,'Prevencion y promocion de la salud en recien nacidos'),(253,'LES',3,'Genetica y salud'),(254,'LES',3,'Sociodemografia y salud I'),(255,'LES',3,'Estrategias de aprendizaje para grupos y comunidades'),(256,'LES',3,'Computacion 2'),(257,'LES',3,'Ingles C2'),(258,'LES',4,'Prevencion y promocion de la salud en la infancia'),(259,'LES',4,'Sociodemografia y salud II'),(260,'LES',4,'Comunicacion para la salud I'),(261,'LES',4,'Didactica y pedagogia para la salud'),(262,'LES',4,'Sociologia de la salud'),(263,'LES',4,'Redes sociales y promocion de la salud'),(264,'LES',4,'Desarrollo comunitario y redes sociales'),(265,'LES',4,'Globalizacion y salud'),(266,'LES',5,'Promocion de la salud adolescente y juvenil I'),(267,'LES',5,'Familia y salud comunitaria'),(268,'LES',5,'Comunicacion para la salud II'),(269,'LES',5,'Educacion y salud I'),(270,'LES',5,'Calidad de vida y salud'),(271,'LES',5,'Dise�o y gestion de proyectos'),(272,'LES',6,'Promocion de la salud adolescente y juvenil II'),(273,'LES',6,'Estilos de vida y riesgos en la poblacion adulta'),(274,'LES',6,'Sistemas de informacion en salud I'),(275,'LES',6,'Perspectiva de genero y salud'),(276,'LES',6,'Educacion y salud II'),(277,'LES',6,'Multiculturalismo y salud'),(278,'LES',7,'Bioetica y promocion de la salud I'),(279,'LES',7,'Sociodemografia, tercera edad y salud'),(280,'LES',7,'Sistemas de informacion en salud II'),(281,'LES',7,'Medios de comunicacion y salud'),(282,'LES',7,'Migracion, salud y enfermedades'),(283,'LES',7,'Estratificacion, desigualdad y movilidad social'),(284,'LES',8,'Bioetica y promocion de la salud II'),(285,'LES',8,'Practica integral comunitaria I'),(286,'LES',8,'Seminario de titulacion I'),(287,'LES',8,'Gestion para la salud comunitaria I'),(288,'LES',8,'Derechos humanos y salud'),(289,'LES',8,'Comunicacion regional'),(290,'LES',9,'Practica integral comunitaria II'),(291,'LES',9,'Seminario de titulacion II'),(292,'LES',9,'Gestion para salud comunitaria II'),(293,'LES',9,'Mercadotecnia social'),(294,'LES',9,'Educacion y capacitacion'),(295,'LSD',1,'Introduccion al estudio del Derecho'),(296,'LSD',1,'Teoria del riesgo e inseguridad social'),(297,'LSD',1,'Metodos cualitativos de investigacion'),(298,'LSD',1,'Probabilidad y estadistica'),(299,'LSD',1,'Sociologia e inseguridad'),(300,'LSD',1,'Historia de las politicas en seguridad en Mexico'),(301,'LSD',10,'Practica profesional'),(302,'LSD',2,'Comunicacion profesiona'),(303,'LSD',2,'Entrevista en Seguridad'),(304,'LSD',2,'Derecho constitucional'),(305,'LSD',2,'Cultura, violencia y delincuencia en Mexico'),(306,'LSD',2,'Criminologia'),(307,'LSD',2,'Prevencion del delito'),(308,'LSD',2,'Manejo de equipo de computo, redes e internet'),(309,'LSD',3,'Casuistica de los derechos humanos'),(310,'LSD',3,'Ingles C1'),(311,'LSD',3,'Analisis economico del sistema de justicia penal'),(312,'LSD',3,'Derecho pena'),(313,'LSD',3,'Teorias de la comunicacion y Seguridad Ciudadana'),(314,'LSD',3,'Estadistica no parametrica'),(315,'LSD',3,'Desarrollo de politicas en Seguridad'),(316,'LSD',4,'Deontologia en la Seguridad Ciudadana'),(317,'LSD',4,'Ingles C2'),(318,'LSD',4,'Evaluacion de programas sociales'),(319,'LSD',4,'Modeos lineales'),(320,'LSD',4,'Modelos de gestion y gerencia en Seguridad Ciudadana'),(321,'LSD',4,'Derecho procesal penal'),(322,'LSD',5,'Dilemas y responsabilidad profesional'),(323,'LSD',5,'Globalizacion, geopolitica y Seguridad Ciudadana'),(324,'LSD',5,'Sistemas de informacion geografica'),(325,'LSD',5,'Planeacion prospectiva'),(326,'LSD',5,'Marco normativo en Seguridad Ciudadana'),(327,'LSD',5,'Psicologia social'),(328,'LSD',5,'Antropologia social'),(329,'LSD',5,'Dise�o y evaluacion de proyectos'),(330,'LSD',6,'Bases de medicina forense'),(331,'LSD',6,'Sociologia criminologica'),(332,'LSD',6,'Desarrollo urbano y demografia para la Seguridad'),(333,'LSD',6,'Policia'),(334,'LSD',6,'Modelos de seguridad'),(335,'LSD',6,'Marco normativo en administracion de justicia'),(336,'LSD',6,'Grupos vulnerables'),(337,'LSD',7,'Formas alternativas de solucion de conflictos'),(338,'LSD',7,'Psicologia criminologica'),(339,'LSD',7,'Reingenieria de procesos'),(340,'LSD',7,'Politicas comparadas en seguridad publica y justicia penal'),(341,'LSD',7,'Politica criminologica'),(342,'LSD',7,'Programas en prevencion del delito'),(343,'LSD',7,'Inteligencia criminologica'),(344,'LSD',7,'Administracion publica y Seguridad Ciudadana'),(345,'LSD',8,'Criminalistica de campo'),(346,'LSD',8,'Victimologia'),(347,'LSD',8,'Analisis delictivo'),(348,'LSD',8,'Penologia y arbitrio judicial'),(349,'LSD',8,'Criminalidad en Mexico'),(350,'LSD',8,'Modelos operativos de intervencion'),(351,'LSD',8,'Delincuencia organizada'),(352,'LSD',8,'Metodos de investigacion ministerial 1'),(353,'LSD',8,'Contraloria social'),(354,'LSD',8,'Seguridad Ciudadana: teoria y reforma del Estado'),(355,'LSD',9,'Criminalistica de laboratorio'),(356,'LSD',9,'Sistema acusatorio'),(357,'LSD',9,'Formas especificas de violencia y delincuencia en Mexico'),(358,'LSD',9,'Informpatica en seguridad publica y justicia penal'),(359,'LSD',9,'Diagnostico y prediccion de la violencia y delincuencia'),(360,'LSD',9,'Marco normativo en prevencion del delito'),(361,'LSD',9,'Metodos de investigacion ministerial 2'),(362,'LSD',9,'Marco normativo en procuracion de justicia'),(363,'LSD',9,'Problemas contemporaneos en seguridad'),(364,'LSD',9,'Participacion social en Seguridad Ciudadana');
 
-ALTER TABLE `Materias`
-  ADD CONSTRAINT `Materias_ibfk_1` FOREIGN KEY (`id_Carrera`) REFERENCES `Carrera` (`id_Carrera`);
+INSERT INTO `Pregunta_type` VALUES (1,'Desempeño Docente'),(2,'Desempeño Estudiantil'),(3,'Identidad Institucional');
 
-ALTER TABLE `Preguntas`
-  ADD CONSTRAINT `Preguntas_ibfk_1` FOREIGN KEY (`id_Type`) REFERENCES `Pregunta_type` (`id_Type`);
+INSERT INTO `Preguntas` VALUES (1,1,'El profesor evidencia que ha preparado las clases con anticipación'),(2,1,'El profesor demuestra dominio sobre el tema en las explicaciones'),(3,1,'El profesor emplea variedad de ayudas audiovisuales (multimedia, diapositivas, videos, etc.)'),(4,1,'El profesor aplica técnicas y estrategias de evaluación'),(5,1,'El profesor se interesa por los y las estudiantes que demuestran problemas en aprender los temas de estudio'),(6,1,'El profesor demuestra que conoce la clase'),(7,1,'El profesor explica temas con ejemplos de la actualidad'),(8,1,'El profesor utiliza variedad de recursos de enseñanza (demostraciones, lecturas, trabajo en grupo, etc.)'),(9,1,'El o los procedimiento(s) de evaluación permite al alumno reflejar sus conocimientos'),(10,1,'El profesor da respuestas claras a las dudas de los estudiantes'),(11,1,'Los objetivos del curso se definen anticipadamente'),(12,1,'El profesor muestra dominio de los temas tratados'),(13,1,'El profesor crea un ambiente propicio para motivar la participación de los alumnos'),(14,1,'El profesor tiene una forma de enseñar que facilita la comprensión de la materia'),(15,1,'El profesor elabora los exámenes para sintetizar efectivamente la materia del curso'),(16,1,'El profesor trata de acercarse y conversar con los estudiantes antes y después de clase'),(17,1,'El profesor resume y enfatiza los aspectos claves de cada lección'),(18,1,'El profesor integra conocimientos teóricos con los prácticos'),(19,1,'El profesor tiene su forma o técnica de enseñar que facilita la comprensión de la materia'),(20,1,'El profesor es imparcial a la hora de evaluar y calificar (exámenes, tareas, asignaciones, otros)'),(21,1,'El profesor demuestra creatividad en las actividades de la clase'),(22,1,'El profesor demuestra seguridad y confianza en lo que explica'),(23,1,'El profesor realiza actividades prácticas, demostrativas y vivenciales para que los alumnos conozcan donde pueden aplicar los conocimientos'),(24,1,'El profesor genera actividades en grupo que conlleven a objetivos comunes'),(25,1,'El profesor se mantiene activo y dinámico cuando dirige este curso'),(26,1,'El profesor planifica las actividades académicas'),(27,1,'El profesor transmite sus conocimientos con entusiasmo por su asignatura'),(28,1,'El profesor los recursos didácticos son acordes con los temas'),(29,1,'El profesor genera retroalimentación en los exámenes, calificaciones y materiales que le ayudan a comprender el contenido de la clase'),(30,1,'El profesor expresa asertivamente, las propias ideas y escucha las ajenas'),(31,2,'Asistí a todas las clases de la semana'),(32,2,'Estoy satisfecho con los aprendizajes obtenidos después de cada clase'),(33,2,'Vivo un ambiente de respeto en el salón de clases'),(34,2,'Asisto puntualmente a las clases'),(35,2,'Atiendo las explicaciones que da el profesor'),(36,2,'El profesor resolvió todas mis dudas'),(37,2,'Considero adecuado que las mujeres estudien ingeniería'),(38,2,'Realizo las tareas y trabajos que se plantean en clase y aquellas/os extraclase'),(39,2,'Las opiniones y soluciones de mis compañeros (hombres) son una aportación importante para la clase'),(40,2,'Las opiniones y soluciones de mis compañeras (mujeres) son una aportación importante para la clase'),(41,3,'Recomendarías a otras personas estudiar Ingeniería en Sistemas Inteligentes en la UAEMEX'),(42,3,'Te sientes identificado con la carrera y su plan de estudios');
 
-ALTER TABLE `RespDsmpDcnte`
-  ADD CONSTRAINT `RespDsmpDcnte_ibfk_1` FOREIGN KEY (`id_Alumno`) REFERENCES `Alumnos` (`Cuenta`),
-  ADD CONSTRAINT `RespDsmpDcnte_ibfk_2` FOREIGN KEY (`id_Materia`) REFERENCES `Materias` (`id_Materia`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+INSERT INTO `RespDsmpDcnte` VALUES (31,1670978,16,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2,2,1,2,2,2,1,1),(32,1670978,19,2,2,3,1,3,3,1,3,2,1,3,2,1,3,1,3,2,1,3,2,1,1,3,3,1,3,2,1,2,2),(33,1771401,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(34,1771401,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(35,1771401,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(36,1771401,16,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(37,1771401,17,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(38,1771401,18,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(39,1771401,19,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(40,1771401,21,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(41,1771401,23,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(42,1771401,24,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(43,2170317,28,2,3,3,3,2,3,2,3,2,2,2,2,2,2,2,1,2,2,3,3,3,3,2,3,3,2,3,2,2,2),(44,2170317,29,2,3,1,2,2,3,3,2,1,2,2,2,2,2,2,1,2,3,2,3,3,2,1,2,2,2,2,2,2,3),(45,2170317,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(46,2170317,31,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(47,2170317,32,3,3,1,3,3,3,3,2,1,2,2,2,2,3,2,1,2,3,2,3,3,2,2,3,3,2,3,2,3,3),(48,2170317,33,3,3,3,3,3,3,3,2,3,2,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(49,2170316,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(50,2170316,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(51,2170316,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(52,2170316,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(53,2170316,32,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(54,2170316,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(55,2170314,29,2,3,2,2,3,3,3,3,2,3,3,3,3,2,2,2,3,3,3,2,3,3,3,2,3,3,3,2,2,3),(56,2170314,30,3,3,2,3,3,3,3,3,2,2,3,3,3,2,2,2,3,3,3,2,3,3,3,2,3,3,3,3,2,3),(57,2170314,31,2,3,2,3,3,3,3,3,2,3,3,3,3,2,2,2,3,3,3,2,3,3,3,2,3,3,3,3,2,3),(58,2170314,32,3,3,2,3,3,3,3,3,3,3,3,3,3,3,2,2,3,3,3,2,3,3,3,3,3,2,3,3,2,3),(59,2170314,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,3,3,3,2,3,3,3,3,3,3,3,3,2,3),(60,1670924,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,3,3,3,3),(61,2170349,28,3,3,3,2,3,3,2,3,2,3,2,3,2,3,2,2,2,3,3,2,3,3,2,2,3,3,3,2,2,3),(62,2170349,29,2,2,3,2,2,2,2,2,2,3,2,3,2,2,2,2,2,3,3,2,3,2,2,2,2,3,2,2,2,3),(63,2170349,30,3,3,3,2,3,3,2,2,2,3,2,3,2,2,2,2,2,3,3,2,3,3,2,2,3,3,3,2,2,3),(64,2170349,31,3,3,3,2,3,3,2,2,2,3,2,3,2,2,2,2,2,3,3,2,2,3,2,2,3,3,3,2,2,3),(65,2170349,32,2,2,3,2,2,2,2,2,2,3,2,2,3,3,2,2,2,3,3,2,3,2,2,2,2,3,2,2,2,3),(66,2170349,33,3,3,3,2,3,3,3,2,2,3,2,3,3,3,2,3,2,3,3,2,3,3,2,2,3,3,3,2,2,3),(67,2170302,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(68,2170302,29,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3),(69,2170302,30,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(70,2170302,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(71,2170302,32,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(72,2170302,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(73,2170262,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(74,2170262,29,2,2,2,3,2,3,3,2,3,3,3,3,2,2,3,2,2,3,3,3,3,2,2,2,3,2,2,2,3,2),(75,2170262,30,3,3,3,3,2,3,3,2,3,3,2,3,2,2,3,2,2,3,3,3,3,3,2,2,3,3,3,2,3,2),(76,2170262,31,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,2,3,3,3,3,3,2,2,3,3,3,3,3,3),(77,2170262,32,2,3,2,3,2,3,2,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,2,2,2,3,3),(78,2170262,33,2,3,3,3,3,3,3,3,3,2,3,3,3,2,3,3,2,3,3,3,3,3,3,3,3,3,2,2,3,3),(79,2170358,28,3,3,3,2,3,3,2,3,3,3,3,3,3,3,2,3,3,2,3,2,3,3,2,3,3,3,2,3,2,2),(80,2170358,29,2,2,2,2,3,3,2,3,3,3,3,3,2,2,2,3,3,2,2,2,2,3,1,2,2,3,2,2,2,2),(81,2170358,30,3,3,3,2,3,3,1,2,3,2,3,3,2,3,2,3,3,2,2,2,2,3,1,1,2,3,3,3,2,2),(82,2170358,31,3,3,2,3,3,3,2,2,3,2,3,3,2,3,2,3,3,2,2,2,2,3,1,1,2,3,3,3,2,2),(83,2170358,32,2,3,1,1,3,3,2,2,3,3,3,3,2,3,2,3,3,2,3,2,3,3,1,1,3,3,3,2,2,2),(84,2170358,33,2,2,2,2,3,3,3,3,3,2,3,3,3,3,2,3,3,2,3,2,3,3,2,3,3,3,2,1,2,2),(85,2170231,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(86,2170231,29,2,2,2,2,2,2,3,2,3,3,2,3,2,2,3,2,3,2,2,3,3,3,3,2,3,3,2,3,3,3),(87,2170231,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(88,2170231,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(89,2170231,32,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(90,2170231,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(91,1771475,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(92,1771475,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(93,1771475,16,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(94,1771475,17,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(95,1771475,18,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(96,1771475,21,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(97,1771475,23,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(98,1771475,24,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(99,2070097,31,3,3,3,3,3,3,2,3,3,3,3,3,2,3,2,3,3,2,3,2,3,3,3,3,3,3,3,3,3,3),(100,2070097,40,3,3,3,3,3,3,2,3,3,3,3,3,2,3,2,3,3,2,3,2,3,3,3,3,3,3,3,3,3,3),(101,2070097,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(102,2070097,42,2,2,3,3,3,2,2,3,3,3,3,2,3,2,2,3,3,3,3,2,3,3,1,2,3,3,3,2,3,3),(103,2070097,43,2,3,2,1,2,2,2,1,1,2,3,3,2,1,2,3,2,3,3,2,2,3,1,1,3,3,3,2,1,3),(104,2070097,45,1,1,2,1,2,2,2,3,1,1,3,2,1,1,2,3,2,1,2,1,1,3,1,1,1,3,2,2,1,3),(105,1771444,31,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(106,1771444,65,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(107,1771444,66,2,3,3,3,2,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(108,1771444,67,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(109,1771444,68,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(110,1771444,69,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(111,1771444,71,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(112,2170245,28,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,2,1,2,2,3,3,2,3,2,3,3,3),(113,2170245,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,1,2,3,3,2,2,3,3,3,3,3),(114,2170245,31,3,3,2,3,3,3,3,3,3,3,3,3,2,3,3,2,3,3,3,1,3,3,3,3,3,3,2,3,3,3),(115,2170245,33,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,3,3,3,3,3),(116,2070157,33,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(117,2070157,40,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(118,2070157,41,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(119,2070157,42,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(120,2070157,43,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(121,2070157,44,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(122,2070157,45,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(123,2070183,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(124,2070183,40,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(125,2070183,41,3,3,3,3,2,3,3,3,3,2,3,3,2,3,3,3,3,3,2,3,3,3,2,3,3,3,3,3,2,3),(126,2070183,42,3,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,2,2,3),(127,2070183,45,2,3,3,3,2,3,3,3,3,2,2,3,2,3,3,2,2,2,2,3,2,3,2,3,3,2,2,1,2,2),(128,2070212,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(129,2070212,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(130,2070212,42,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(131,2070212,43,2,2,2,2,2,3,3,2,2,2,3,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(132,2070212,44,2,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,3,2,2,2,3,3,2,3,3,2,3,2,2,2),(133,2070212,45,2,3,2,2,3,3,3,2,2,2,3,2,3,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(134,2070144,40,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(135,2070144,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(136,2070144,42,3,3,3,3,3,3,3,3,3,2,3,3,3,2,3,3,3,3,3,2,3,3,3,2,3,3,3,3,3,3),(137,2070144,43,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,3),(138,2070144,44,3,3,3,3,3,3,3,2,2,3,2,3,3,2,2,3,2,2,2,2,2,3,2,3,2,2,3,3,2,3),(139,2070144,45,2,3,2,1,2,3,3,2,2,2,2,3,2,2,1,2,2,2,2,2,2,3,2,2,2,2,2,3,2,3),(140,2070172,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(141,2070172,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(142,2070172,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(143,2070172,44,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(144,2070172,45,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3),(145,2070094,40,3,3,2,2,3,3,2,2,2,2,3,3,3,1,3,1,2,2,2,3,2,3,2,1,1,3,2,2,3,2),(146,2070094,41,2,2,3,3,3,3,3,3,2,3,3,2,3,2,2,2,2,3,3,3,2,3,3,3,2,3,3,3,2,3),(147,2070094,42,2,2,2,2,3,2,2,3,2,2,2,2,3,2,2,2,2,2,2,3,2,2,2,2,1,2,2,2,1,2),(148,2070094,43,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(149,2070094,44,2,3,1,2,3,3,2,2,2,2,1,2,2,2,1,2,2,2,2,3,2,2,2,1,2,2,2,2,1,2),(150,2070094,45,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1,1,1,3,1,1,1,1,1,1,1,1,1,3),(151,2070146,40,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,1,3,3,3,1,3,2,3,2,3,3,3,3,1,3),(152,2070146,41,2,2,3,3,3,1,2,2,2,2,3,1,2,1,3,1,3,3,3,1,1,2,1,2,3,2,3,2,1,3),(153,2070146,42,3,2,3,3,3,3,3,3,2,2,3,3,2,2,3,1,3,2,3,1,3,3,3,2,3,3,3,3,1,3),(154,2070146,43,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,2,3,3,3,3,1,3),(155,2070146,44,1,2,2,3,2,2,3,2,2,2,3,1,2,1,3,1,3,3,2,1,3,1,1,2,2,1,3,2,1,3),(156,2070146,45,1,2,3,3,2,2,3,2,2,2,3,1,2,1,3,1,3,1,2,1,1,1,3,2,3,3,3,3,1,3),(157,2070111,40,3,3,2,2,3,3,2,2,2,2,3,3,3,2,3,2,2,3,2,2,2,3,3,3,3,3,3,3,2,3),(158,2070111,41,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(159,2070111,42,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(160,2070111,44,3,3,2,3,3,3,2,2,2,2,3,3,2,2,2,3,2,2,2,2,2,3,2,3,3,3,3,3,2,3),(161,2070111,45,2,3,2,3,3,2,3,3,2,3,3,2,3,3,2,2,2,2,3,3,2,3,2,3,3,3,3,2,2,3),(162,1515828,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(163,1515828,40,3,3,3,3,3,2,3,3,2,3,3,3,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(164,1515828,42,3,3,3,3,3,3,3,3,2,3,3,3,2,3,3,3,3,3,3,3,3,3,2,3,3,2,2,3,3,3),(165,1515828,43,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3),(166,1515828,44,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,3,3,3,3,3,3,3,1,3,3,1,3,3,3,3),(167,1515828,45,3,3,2,3,2,2,3,3,3,3,3,3,2,2,3,3,3,3,3,3,3,3,1,3,3,1,2,3,3,3),(168,1670846,52,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(169,1670846,53,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(170,1670846,54,2,3,1,3,2,2,3,3,3,3,3,2,3,2,3,3,2,2,2,3,2,3,2,3,2,3,2,3,2,3),(171,1670846,57,3,3,2,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(172,1670846,52,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(173,1670846,53,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(174,1670846,54,2,3,1,3,2,2,3,3,3,3,3,2,3,2,3,3,2,2,2,3,2,3,2,3,2,3,2,3,2,3),(175,1670846,57,3,3,2,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(176,2070179,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(177,2070179,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(178,2070179,42,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(179,2070179,43,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(180,2070179,44,2,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,2,2,3,3,3,2,3,3,3,3),(181,2070179,45,2,3,2,3,2,3,3,3,3,3,3,2,3,2,3,2,3,3,3,3,2,2,2,2,2,2,2,2,2,3),(182,2070207,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(183,2070207,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(184,2070207,42,2,2,3,3,3,2,3,2,3,3,3,3,3,3,3,2,3,3,3,2,3,3,3,3,2,2,3,3,3,3),(185,2070207,43,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(186,2070207,44,2,2,2,2,3,2,2,2,2,2,3,2,2,1,2,2,2,3,1,2,2,2,1,2,1,2,1,2,2,2),(187,2070207,45,1,2,2,2,2,2,1,2,1,2,3,2,1,2,2,2,2,2,2,2,2,2,1,2,1,2,1,1,2,2),(188,2070189,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(189,2070189,41,2,3,3,3,3,3,3,3,2,2,3,3,2,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(190,2070189,42,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(191,2070189,43,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(192,2070189,44,1,1,2,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1),(193,2070189,45,2,3,2,3,2,3,3,3,3,3,3,3,3,3,2,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(194,2070150,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(195,2070150,41,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(196,2070150,42,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(197,2070150,43,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(198,2070150,44,3,3,3,3,2,3,2,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(199,2070150,45,2,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,2,3,3,2,3,3,3,3,2,3,3,2,3),(200,1616734,40,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(201,1616734,41,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,2,3),(202,1616734,42,3,3,2,2,3,3,3,3,2,3,3,3,3,3,3,3,2,3,3,3,3,3,3,2,3,3,3,2,2,3),(203,1616734,43,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(204,1616734,44,3,3,2,3,3,3,3,3,2,2,2,3,3,2,3,3,2,3,2,3,3,3,3,2,3,3,3,3,2,3),(205,1616734,45,2,3,3,2,3,3,3,2,2,2,2,3,3,3,3,3,2,3,2,3,3,3,3,2,3,3,3,2,2,3),(206,2070130,40,3,3,3,3,3,3,3,3,3,2,3,3,2,2,3,3,2,2,3,3,2,3,3,3,2,3,3,3,3,3),(207,2070130,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(208,2070130,42,3,2,3,2,3,2,2,2,2,2,2,3,2,2,2,3,2,2,2,3,2,3,2,3,2,3,2,3,3,2),(209,2070130,43,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(210,2070130,44,1,2,2,1,1,2,1,2,2,1,1,1,1,1,1,2,2,2,2,1,2,2,1,2,2,1,1,1,1,1),(211,2070130,45,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2,1,1,1,1,1),(212,2070166,40,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,2,3,2,3,2,2,2,2,2,3,3,3,2,1,2),(213,2070166,41,2,3,3,3,3,3,3,3,2,1,2,3,3,2,3,2,3,3,3,2,2,2,2,2,3,3,2,2,1,2),(214,2070166,42,2,3,3,3,2,3,3,2,2,1,2,3,3,2,2,2,3,3,3,2,2,2,2,2,3,3,3,2,1,2),(215,2070166,43,3,3,3,3,2,3,3,3,2,1,2,3,3,2,2,2,2,1,2,2,2,2,2,2,3,3,3,2,3,2),(216,2070166,44,1,1,1,1,2,1,3,1,2,1,1,1,1,2,1,2,1,1,1,2,2,2,1,1,2,3,1,2,1,2),(217,2070166,45,1,2,1,1,1,1,1,1,2,3,1,1,1,2,2,2,2,1,2,2,2,2,3,2,1,2,1,2,1,2),(218,2070132,40,3,3,3,3,2,3,3,3,3,3,2,3,2,2,2,2,3,3,2,2,3,3,3,2,3,3,3,2,1,3),(219,2070132,41,3,3,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,3,3,2,3,3,3,2,3,3,3,2,3,3),(220,2070132,42,3,3,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,3,3,2,3,3,3,2,3,3,3,2,3,3),(221,2070132,43,3,3,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,3,3,2,3,3,3,2,3,3,3,2,3,3),(222,2070132,44,1,1,1,1,1,2,1,1,2,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,1,1,1,2,1,2),(223,2070132,45,1,1,1,1,2,2,1,1,2,1,2,1,1,1,2,2,1,1,1,2,3,2,2,2,1,1,1,2,1,2),(224,2070188,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(225,2070188,41,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(226,2070188,42,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(227,2070188,43,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(228,2070188,44,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1),(229,2070188,45,2,2,2,1,2,2,1,1,2,2,2,2,2,2,2,2,2,2,3,1,2,2,3,2,2,3,2,2,2,2),(230,2070129,40,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(231,2070129,41,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(232,2070129,42,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(233,2070129,43,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(234,2070129,44,2,2,3,3,3,2,3,3,3,2,2,2,3,1,3,3,2,2,2,3,3,3,3,3,3,3,3,3,3,3),(235,2070129,45,3,2,3,3,3,3,3,2,3,2,2,2,3,2,3,3,2,2,2,3,3,3,3,3,3,2,3,3,3,3),(236,2170244,28,2,3,3,2,3,3,3,3,2,3,2,3,3,3,2,3,3,2,2,2,2,3,3,2,3,3,2,2,2,3),(237,2170244,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(238,2170244,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(239,2170244,31,2,2,2,3,2,1,2,2,3,2,2,1,2,2,2,2,2,1,2,3,2,2,2,2,3,3,1,2,3,2),(240,2170244,32,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(241,2170244,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(242,2170261,28,2,2,2,3,3,3,3,3,3,3,2,3,3,2,3,3,2,3,2,3,3,3,2,2,3,3,3,3,2,3),(243,2170261,29,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3),(244,2170261,30,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3),(245,2170261,31,2,2,3,2,2,2,2,3,3,2,2,2,2,2,3,2,3,3,2,3,3,2,2,2,3,3,3,3,2,3),(246,2170261,32,2,2,1,1,2,2,2,2,3,3,1,3,2,2,3,2,2,3,2,3,2,2,2,1,2,2,1,2,1,2),(247,2170261,33,3,3,3,3,3,3,3,3,3,2,3,3,3,2,3,2,3,3,2,3,3,3,2,3,3,3,3,3,3,3),(248,2170363,28,2,3,1,3,3,3,3,3,3,3,3,3,2,2,3,1,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(249,2170363,29,3,3,3,2,3,3,3,2,3,3,3,3,3,3,3,2,3,3,3,3,2,3,3,1,3,3,3,3,3,3),(250,2170363,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,1,3,3,3,3,3,3),(251,2170363,31,2,2,3,2,2,2,2,2,1,1,3,2,1,2,2,1,2,2,2,2,1,3,2,2,2,3,2,3,1,2),(252,2170363,32,1,2,3,2,1,3,3,2,1,2,3,3,3,2,1,1,2,2,2,1,1,2,3,1,1,1,2,3,1,1),(253,2170363,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(254,2170362,28,3,3,2,2,3,3,3,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,2,3,3,2,3,3,2,3),(255,2170362,29,3,3,2,2,3,3,3,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,2,3,3,3,3),(256,2170362,30,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,1,3,3,3,3,3,3),(257,2170362,31,1,1,3,1,1,1,2,2,1,1,1,1,2,1,2,1,3,1,1,2,1,2,1,1,1,2,1,1,1,1),(258,2170362,32,2,2,2,2,2,2,1,1,2,2,2,2,1,2,1,1,1,2,2,1,2,1,1,1,1,1,2,3,2,2),(259,2170362,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(260,1840040,28,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(261,1840040,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(262,1840040,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(263,1840040,31,2,1,1,1,2,1,3,2,2,1,3,1,1,1,3,1,1,3,1,3,1,1,2,2,1,3,1,1,3,1),(264,1840040,32,3,2,2,2,3,3,3,2,2,2,3,2,2,3,3,2,1,3,2,3,2,2,2,2,2,3,3,2,3,1),(265,1840040,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(266,1544861,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(267,1544861,29,3,3,1,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(268,1544861,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(269,1544861,31,2,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),(270,1544861,32,1,1,1,1,2,2,3,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2),(271,1544861,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(272,2170303,28,2,3,2,2,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,2,2,3,3,3,3,2,2),(273,2170303,30,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,2,2,3,2,2,3,3,3,3,3,2),(274,2170303,31,1,1,2,1,2,1,1,1,2,2,1,2,1,2,2,1,2,2,2,3,1,2,1,1,2,2,2,2,2,1),(275,2170303,33,3,3,3,3,3,3,3,3,3,3,3,3,3,1,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3),(276,2170275,28,3,3,2,3,3,3,3,3,3,3,2,3,3,3,1,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3),(277,2170275,29,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3),(278,2170275,30,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(279,2170275,31,3,2,3,3,3,2,2,3,3,2,2,2,1,2,3,3,2,3,2,3,2,2,2,3,3,3,3,3,3,2),(280,2170275,32,2,2,1,1,3,2,2,2,3,3,1,3,3,3,3,3,2,3,3,3,2,3,3,2,3,3,2,3,3,3),(281,2170275,33,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3),(282,2170301,28,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(283,2170301,29,3,3,3,2,2,3,2,2,2,2,2,3,2,2,2,2,2,3,2,3,2,3,2,1,2,3,2,3,2,2),(284,2170301,30,3,3,2,2,2,3,2,1,2,2,2,3,2,2,2,3,2,3,2,2,2,3,2,1,2,3,2,3,2,2),(285,2170301,31,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,3,2,3,2,2,2,1,2,2,2,3,2,2),(286,2170301,32,1,1,1,2,1,1,1,1,2,1,1,2,1,1,3,1,1,1,1,3,1,1,1,1,1,1,1,1,1,1),(287,2170301,33,2,3,3,1,1,3,2,1,1,1,2,3,1,1,2,1,2,1,1,2,2,3,3,1,2,2,2,3,2,1),(288,2170341,28,3,3,2,3,3,3,3,3,2,3,3,3,3,3,3,1,3,3,3,3,3,3,3,2,2,3,3,3,2,2),(289,2170341,30,3,3,1,3,2,3,3,2,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,2,3,3,3,3,3,3),(290,2170341,31,1,1,3,2,1,1,1,1,1,1,2,1,3,1,2,1,2,1,1,3,2,1,1,1,2,2,2,3,1,2),(291,2170341,32,2,2,2,3,2,2,2,1,2,2,2,2,2,2,3,1,3,1,2,3,2,2,1,1,1,2,2,2,2,2),(292,2170341,33,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(293,2070123,29,2,3,2,3,2,3,3,2,2,3,3,3,2,2,3,2,2,2,2,2,2,3,3,2,3,3,2,3,2,3),(294,2070123,30,2,3,2,3,2,3,3,2,2,3,3,3,2,2,3,2,2,2,2,2,2,3,3,2,3,3,2,3,2,3),(295,2070123,32,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(296,2070123,43,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(297,2070123,44,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(298,2070123,45,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(299,2170335,28,3,2,2,3,3,3,3,3,3,3,2,3,3,3,1,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3),(300,2170335,29,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(301,2170335,30,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(302,2170335,31,3,2,3,3,3,2,2,3,3,2,2,2,2,2,3,3,2,3,2,3,2,2,2,3,3,3,3,3,3,2),(303,2170335,32,2,2,1,1,3,2,3,2,3,3,1,3,3,3,3,3,2,3,3,3,2,3,3,2,3,3,2,3,3,3),(304,2170335,33,3,3,3,3,3,3,3,2,3,2,3,3,3,2,3,3,2,3,2,3,3,3,3,3,3,3,3,3,3,3),(305,1841716,28,2,2,2,3,2,2,3,3,2,2,3,3,3,2,3,1,3,3,3,3,3,3,3,3,3,3,3,3,2,2),(306,1841716,29,3,3,2,3,3,3,3,3,2,3,3,3,2,3,3,1,3,3,2,3,3,3,3,2,3,3,3,3,2,2),(307,1841716,30,3,3,2,3,2,3,3,3,2,3,3,3,2,2,2,1,2,3,2,3,3,3,3,2,3,3,3,3,1,2),(308,1841716,31,1,1,2,2,2,1,2,2,2,1,1,1,2,2,2,1,1,2,1,3,2,1,1,1,2,2,2,2,1,1),(309,1841716,32,2,1,2,2,2,1,2,2,2,1,2,1,2,2,3,1,1,2,1,3,2,1,1,1,1,2,1,2,1,1),(310,1841716,33,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,1,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(311,2170297,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,2,3,3,2,3,3,2,3,3,3,3,3,3),(312,2170297,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3),(313,2170297,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3),(314,2170297,31,2,2,3,2,3,2,3,3,2,2,2,2,3,2,3,2,3,2,3,3,2,3,2,2,3,3,2,3,2,3),(315,2170297,32,2,2,2,2,2,2,3,3,2,2,2,3,2,2,3,2,2,2,3,3,2,3,2,2,2,3,2,3,2,2),(316,2170297,33,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,2,2,3,3,3,3,3,2),(317,2170296,28,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(318,2170296,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(319,2170296,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(320,2170296,31,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,3,2,2,2,3,2,2,2,2,2,2,2,2,1,2),(321,2170296,32,1,1,1,2,1,1,1,1,2,1,3,2,1,2,2,2,1,1,1,3,1,2,2,1,1,1,1,1,1,1),(322,2170296,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(323,1825545,28,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(324,1825545,30,3,3,3,3,2,3,3,2,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,3,3,3,3,2,3),(325,1825545,31,2,1,2,2,2,1,2,2,3,2,3,2,2,1,2,2,3,2,2,2,2,1,2,2,2,3,3,2,1,3),(326,1825545,43,2,2,2,2,2,2,2,3,2,2,3,2,3,2,3,3,3,3,3,3,3,2,3,3,3,3,3,3,2,3),(327,1825545,57,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(328,1825545,65,2,2,2,2,2,2,2,3,3,2,3,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,3),(329,1825545,66,2,3,2,1,2,3,3,2,1,2,2,3,2,2,1,2,3,2,1,1,3,3,3,2,2,2,3,2,2,2),(330,1825545,67,2,2,2,2,2,2,3,3,3,2,2,2,3,2,3,3,3,2,2,3,3,3,3,2,3,1,3,2,2,3),(331,1825545,71,2,2,2,3,2,2,3,3,3,2,2,2,3,2,3,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3),(332,2170265,28,2,3,2,3,3,3,3,3,3,3,3,3,3,2,3,3,3,3,2,3,3,3,2,3,3,3,3,3,2,3),(333,2170265,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(334,2170265,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(335,2170265,31,2,2,3,3,2,2,3,3,3,2,3,2,3,2,3,3,3,3,2,3,3,2,2,3,3,3,2,3,2,3),(336,2170265,32,2,2,3,3,3,3,3,3,3,3,3,2,2,3,3,3,3,3,2,3,3,3,2,3,3,3,2,3,2,3),(337,2170265,33,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3),(338,2170284,28,3,3,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2),(339,2170284,29,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2),(340,2170284,30,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2),(341,2170284,31,1,1,2,2,1,1,1,1,1,1,1,1,2,2,1,2,2,2,1,2,1,1,2,1,2,1,1,2,1,2),(342,2170284,32,1,1,1,1,1,1,2,1,1,1,2,1,2,2,1,2,2,2,2,2,1,1,1,1,2,1,1,2,1,2),(343,2170284,33,3,3,3,2,3,3,3,3,2,3,3,3,3,3,2,3,3,2,3,3,3,3,3,2,3,3,3,3,3,3),(344,1670978,10,1,2,1,2,2,3,2,2,1,2,3,2,2,1,2,3,2,2,3,2,2,3,2,1,2,2,2,2,3,2),(345,1670978,10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
 
-ALTER TABLE `RespDsmpEstdtl`
-  ADD CONSTRAINT `RespDsmpEstdtl_ibfk_1` FOREIGN KEY (`id_Alumno`) REFERENCES `Alumnos` (`Cuenta`),
-  ADD CONSTRAINT `RespDsmpEstdtl_ibfk_2` FOREIGN KEY (`id_Materia`) REFERENCES `Materias` (`id_Materia`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+INSERT INTO `RespDsmpEstdtl` VALUES (26,1670978,16,2,2,2,2,2,2,2,2,1,2),(27,1670978,19,2,1,3,3,1,3,2,2,3,2),(28,1771401,28,3,3,3,3,3,3,3,3,3,3),(29,1771401,31,3,3,3,3,3,3,3,3,3,3),(30,1771401,33,2,3,3,3,3,3,3,3,3,3),(31,1771401,16,3,3,3,3,3,3,3,3,3,3),(32,1771401,17,3,3,3,3,3,3,3,3,3,3),(33,1771401,18,3,3,3,3,3,3,3,3,3,3),(34,1771401,19,3,3,3,3,3,3,3,3,3,3),(35,1771401,21,3,3,3,3,3,3,3,3,3,3),(36,1771401,23,3,3,3,3,3,3,3,3,3,3),(37,1771401,24,3,3,3,3,3,3,3,3,3,3),(38,2170317,28,3,2,3,3,3,2,3,3,3,3),(39,2170317,29,2,2,3,3,3,2,3,3,3,3),(40,2170317,30,3,3,3,3,3,3,3,3,3,3),(41,2170317,31,3,3,3,3,3,3,3,3,3,3),(42,2170317,32,1,2,3,3,3,3,3,3,3,3),(43,2170317,33,3,3,3,3,3,3,3,3,3,3),(44,2170316,28,3,3,3,3,3,3,3,3,3,3),(45,2170316,29,3,3,3,3,3,3,3,3,3,3),(46,2170316,30,3,3,3,3,3,3,3,3,3,3),(47,2170316,31,3,3,3,3,3,3,3,3,3,3),(48,2170316,32,3,3,3,3,3,3,3,3,3,3),(49,2170316,33,3,3,3,3,3,3,3,3,3,3),(50,2170314,29,3,3,3,3,2,3,3,3,3,3),(51,2170314,30,3,3,3,3,2,3,3,3,3,3),(52,2170314,31,3,3,3,3,2,3,3,2,3,3),(53,2170314,32,3,3,3,3,3,3,3,3,3,3),(54,2170314,33,3,3,3,3,3,3,3,3,3,3),(55,1670924,31,3,3,3,3,3,3,3,3,3,3),(56,2170349,28,3,3,3,3,3,3,3,3,2,2),(57,2170349,29,3,2,3,3,3,2,3,3,2,2),(58,2170349,30,3,2,3,3,3,2,3,2,2,2),(59,2170349,31,3,2,3,3,3,2,3,2,2,2),(60,2170349,32,3,3,3,3,3,2,3,3,2,2),(61,2170349,33,3,3,3,3,3,2,3,3,2,2),(62,2170302,28,3,3,3,3,3,3,3,2,3,3),(63,2170302,29,2,3,3,3,3,3,3,3,3,3),(64,2170302,30,3,3,3,3,3,3,3,3,3,3),(65,2170302,31,3,3,3,3,3,3,3,3,3,3),(66,2170302,32,3,3,3,3,3,3,3,3,3,3),(67,2170302,33,2,3,3,3,3,3,3,3,3,3),(68,2170262,28,3,3,3,3,3,3,3,3,3,3),(69,2170262,29,3,3,3,3,3,3,3,3,3,3),(70,2170262,30,3,3,3,3,3,3,3,3,3,3),(71,2170262,31,3,3,3,3,3,3,3,3,3,3),(72,2170262,32,3,3,3,3,3,3,3,3,3,3),(73,2170262,33,3,3,3,3,3,3,3,3,3,3),(74,2170358,28,3,2,3,3,3,3,3,2,2,2),(75,2170358,29,3,2,3,3,2,3,3,1,2,2),(76,2170358,30,3,2,3,3,2,3,3,1,2,2),(77,2170358,31,3,2,3,3,2,3,3,1,2,2),(78,2170358,32,3,3,3,3,2,3,3,1,2,2),(79,2170358,33,3,2,3,3,3,3,3,2,2,2),(80,2170231,28,3,3,3,3,3,3,3,3,3,3),(81,2170231,29,2,2,3,3,2,2,3,3,3,3),(82,2170231,30,3,3,3,3,3,3,3,3,3,3),(83,2170231,31,3,3,3,3,3,3,3,3,3,3),(84,2170231,32,3,3,3,3,3,3,3,3,3,3),(85,2170231,33,3,3,3,3,3,3,3,3,3,3),(86,1771475,31,3,3,3,3,3,3,3,3,3,3),(87,1771475,33,3,3,3,3,3,3,3,3,3,3),(88,1771475,16,3,3,3,3,3,3,3,3,3,3),(89,1771475,17,3,3,3,3,3,3,3,3,3,3),(90,1771475,18,3,3,3,3,3,3,3,3,3,3),(91,1771475,21,3,3,3,3,3,3,3,3,3,3),(92,1771475,23,3,3,3,3,3,3,3,3,3,3),(93,1771475,24,3,3,3,3,3,3,3,3,3,3),(94,2070097,31,2,3,3,3,3,3,3,2,2,2),(95,2070097,40,2,3,3,3,3,3,3,2,2,2),(96,2070097,41,3,3,3,3,3,3,3,2,2,2),(97,2070097,42,3,2,3,3,3,3,3,2,2,2),(98,2070097,43,2,1,3,3,3,3,3,2,2,2),(99,2070097,45,1,1,3,3,3,3,3,2,2,2),(100,1771444,31,2,3,3,3,3,3,3,2,3,3),(101,1771444,65,3,2,3,3,3,3,3,3,3,3),(102,1771444,66,3,3,3,3,3,3,3,3,3,3),(103,1771444,67,3,3,3,2,3,3,3,3,3,3),(104,1771444,68,3,3,3,3,3,3,3,2,3,3),(105,1771444,69,3,3,3,2,3,3,3,3,3,3),(106,1771444,71,3,3,3,3,3,3,3,3,3,3),(107,2170245,28,2,2,3,2,3,3,3,3,2,3),(108,2170245,30,3,3,3,3,3,3,3,2,2,3),(109,2170245,31,3,3,3,3,3,3,3,2,2,3),(110,2170245,33,2,2,3,2,3,3,3,1,2,3),(111,2070157,33,2,2,2,2,2,2,2,2,2,2),(112,2070157,40,2,2,2,2,2,2,2,2,2,2),(113,2070157,41,2,2,2,2,2,2,2,2,2,2),(114,2070157,42,2,2,2,3,2,2,2,2,2,2),(115,2070157,43,2,2,2,2,2,2,2,2,2,2),(116,2070157,44,2,2,2,2,2,2,2,2,2,2),(117,2070157,45,2,2,2,2,2,2,2,2,2,2),(118,2070183,33,2,3,3,3,3,3,3,3,3,3),(119,2070183,40,3,3,3,3,3,3,3,3,3,3),(120,2070183,41,3,3,3,3,3,3,3,3,3,3),(121,2070183,42,3,3,3,3,3,3,3,3,3,3),(122,2070183,45,3,2,3,3,3,3,3,3,3,3),(123,2070212,40,3,3,2,3,3,3,3,3,3,3),(124,2070212,41,3,3,2,3,3,3,3,3,3,3),(125,2070212,42,3,3,2,3,3,3,3,3,3,3),(126,2070212,43,3,1,2,3,3,2,3,3,3,3),(127,2070212,44,3,2,2,3,3,2,3,3,3,3),(128,2070212,45,3,1,2,3,3,2,3,3,3,3),(129,2070144,40,3,3,3,3,3,3,3,3,3,3),(130,2070144,41,3,3,3,3,3,3,3,3,3,3),(131,2070144,42,3,3,3,3,3,3,3,3,3,3),(132,2070144,43,3,3,3,3,3,3,3,3,3,3),(133,2070144,44,3,2,3,3,3,3,3,3,3,3),(134,2070144,45,3,2,3,3,3,3,3,3,3,3),(135,2070172,30,3,2,3,3,3,3,3,3,3,3),(136,2070172,33,3,2,3,3,3,3,3,3,3,3),(137,2070172,40,2,2,3,2,3,3,3,3,3,3),(138,2070172,44,2,2,3,3,3,3,3,3,3,3),(139,2070172,45,2,2,3,3,3,3,3,3,3,3),(140,2070094,40,3,3,3,3,3,3,1,3,3,1),(141,2070094,41,3,3,3,3,3,3,1,3,3,1),(142,2070094,42,3,2,3,3,3,2,1,3,3,1),(143,2070094,43,3,3,3,3,3,3,1,3,3,1),(144,2070094,44,3,2,3,3,3,2,1,3,3,1),(145,2070094,45,3,1,3,3,3,2,3,3,3,1),(146,2070146,40,3,3,3,3,3,3,2,3,3,1),(147,2070146,41,2,1,3,2,2,2,2,3,3,1),(148,2070146,42,3,3,3,3,3,3,2,3,3,1),(149,2070146,43,3,3,3,2,3,3,2,2,3,1),(150,2070146,44,3,2,3,3,3,2,2,3,3,1),(151,2070146,45,3,1,2,2,2,2,2,3,3,1),(152,2070111,40,3,2,2,2,3,2,2,3,3,2),(153,2070111,41,2,3,3,3,3,3,2,3,3,2),(154,2070111,42,3,3,3,3,3,3,2,3,3,2),(155,2070111,44,3,2,2,3,3,2,2,3,3,2),(156,2070111,45,3,2,2,2,3,3,3,3,3,3),(157,1515828,33,2,3,3,3,3,3,2,3,3,2),(158,1515828,40,3,3,3,3,3,3,2,3,3,2),(159,1515828,42,3,3,3,3,3,3,2,3,3,2),(160,1515828,43,2,3,3,3,3,3,2,3,3,2),(161,1515828,44,3,3,3,3,2,2,2,3,3,2),(162,1515828,45,2,3,3,3,2,2,3,3,3,3),(163,1670846,52,3,3,3,2,3,3,3,3,2,2),(164,1670846,53,3,3,3,3,3,1,3,2,2,2),(165,1670846,54,3,2,3,2,3,2,3,3,2,2),(166,1670846,57,3,3,3,2,3,2,3,3,2,2),(167,1670846,52,3,3,3,2,3,3,3,3,2,2),(168,1670846,53,3,3,3,3,3,1,3,2,2,2),(169,1670846,54,3,2,3,2,3,2,3,3,2,2),(170,1670846,57,3,3,3,2,3,2,3,3,2,2),(171,2070179,40,3,3,3,3,3,3,3,3,3,3),(172,2070179,41,3,3,3,3,3,3,3,3,3,3),(173,2070179,42,3,3,3,3,3,3,3,3,3,3),(174,2070179,43,3,3,3,3,3,3,3,3,3,3),(175,2070179,44,3,3,3,3,3,3,3,3,3,3),(176,2070179,45,3,2,3,3,3,2,3,3,3,3),(177,2070207,40,3,3,3,3,3,3,3,3,3,3),(178,2070207,41,3,3,3,2,3,3,3,3,3,3),(179,2070207,42,3,3,3,3,3,3,3,3,3,3),(180,2070207,43,3,3,3,2,3,3,3,3,3,3),(181,2070207,44,3,1,3,3,1,2,3,3,3,3),(182,2070207,45,3,1,3,3,1,2,3,3,3,3),(183,2070189,40,3,3,3,3,3,3,3,3,3,3),(184,2070189,41,3,3,3,3,3,3,3,3,3,3),(185,2070189,42,3,3,3,3,3,3,3,3,3,3),(186,2070189,43,3,3,3,3,3,3,3,3,3,3),(187,2070189,44,1,1,1,1,1,1,1,1,1,1),(188,2070189,45,3,3,3,3,3,3,3,3,3,3),(189,2070150,40,3,3,3,3,3,3,3,3,3,3),(190,2070150,41,3,3,3,3,3,3,3,3,3,3),(191,2070150,42,3,3,3,3,3,3,3,3,3,3),(192,2070150,43,3,3,3,3,3,3,3,3,3,3),(193,2070150,44,3,3,3,3,3,3,3,3,3,3),(194,2070150,45,3,3,3,3,3,3,3,3,3,3),(195,1616734,40,3,3,3,2,3,3,3,3,3,3),(196,1616734,41,3,3,3,3,2,3,3,3,3,3),(197,1616734,42,3,3,3,2,2,3,3,3,3,3),(198,1616734,43,3,3,3,3,3,3,3,3,3,3),(199,1616734,44,3,3,3,2,3,3,3,3,3,3),(200,1616734,45,3,3,3,2,2,3,3,3,3,3),(201,2070130,40,3,3,1,2,2,2,3,1,2,3),(202,2070130,41,3,3,1,2,3,3,3,3,2,3),(203,2070130,42,3,3,1,2,2,2,3,2,2,3),(204,2070130,43,3,3,1,2,3,3,3,3,2,3),(205,2070130,44,3,2,1,2,2,2,3,2,2,3),(206,2070130,45,3,1,1,2,1,1,3,1,2,3),(207,2070166,40,3,3,2,3,3,3,2,2,2,2),(208,2070166,41,3,3,3,3,3,3,2,2,2,3),(209,2070166,42,3,2,3,3,3,3,2,2,3,3),(210,2070166,43,3,3,1,3,3,3,2,2,2,3),(211,2070166,44,3,2,2,3,3,1,2,2,2,1),(212,2070166,45,3,3,3,3,3,2,2,2,2,1),(213,2070132,40,3,1,3,3,2,1,3,3,3,3),(214,2070132,41,3,3,3,3,2,3,3,3,3,3),(215,2070132,42,3,3,3,3,2,3,3,3,3,3),(216,2070132,43,3,1,3,3,2,2,3,3,3,3),(217,2070132,44,1,1,3,1,2,1,3,3,3,3),(218,2070132,45,1,2,3,1,2,1,3,3,3,3),(219,2070188,40,3,3,3,3,3,3,3,3,3,3),(220,2070188,41,3,3,3,3,3,3,3,3,3,3),(221,2070188,42,3,3,3,3,3,3,3,3,3,3),(222,2070188,43,3,3,3,3,3,3,3,3,3,3),(223,2070188,44,1,1,1,3,3,1,3,3,3,3),(224,2070188,45,1,1,2,3,3,2,3,3,3,3),(225,2070129,40,3,3,3,3,3,3,3,3,3,3),(226,2070129,41,3,3,3,3,3,3,3,3,3,3),(227,2070129,42,3,3,3,3,3,3,3,3,3,3),(228,2070129,43,3,3,3,3,3,3,3,3,3,3),(229,2070129,44,3,2,3,3,3,3,3,3,3,3),(230,2070129,45,3,2,3,3,3,3,3,3,3,3),(231,2170244,28,3,2,3,3,3,3,3,2,3,3),(232,2170244,29,3,3,3,3,3,3,3,3,3,3),(233,2170244,30,3,3,3,3,3,3,3,3,3,3),(234,2170244,31,3,2,3,3,2,2,3,3,3,3),(235,2170244,32,3,3,3,3,3,3,3,3,3,3),(236,2170244,33,3,3,3,3,2,3,3,2,3,3),(237,2170261,28,3,2,3,2,2,3,3,2,3,3),(238,2170261,29,3,3,3,2,3,3,3,2,3,3),(239,2170261,30,3,3,3,3,3,3,3,2,3,3),(240,2170261,31,3,2,3,2,3,2,3,2,3,3),(241,2170261,32,3,2,3,1,2,2,3,2,3,3),(242,2170261,33,3,2,3,3,2,2,3,2,3,3),(243,2170363,28,3,3,3,3,3,3,3,3,3,3),(244,2170363,29,3,3,3,3,3,3,3,3,3,3),(245,2170363,30,3,3,3,3,3,3,3,3,3,3),(246,2170363,31,3,2,3,3,3,2,3,3,3,3),(247,2170363,32,3,1,3,3,3,2,3,3,3,3),(248,2170363,33,3,3,3,3,3,3,3,3,3,3),(249,2170362,28,3,3,3,2,3,2,3,3,3,3),(250,2170362,29,3,3,3,3,3,3,3,3,3,3),(251,2170362,30,3,3,3,3,3,3,3,3,3,3),(252,2170362,31,3,1,3,2,3,1,3,2,3,3),(253,2170362,32,3,2,3,3,3,2,3,1,3,3),(254,2170362,33,3,3,3,3,3,3,3,3,3,3),(255,1840040,28,3,3,3,3,3,3,3,3,3,3),(256,1840040,29,2,3,3,3,3,3,3,3,3,3),(257,1840040,30,3,3,3,3,3,3,3,3,3,3),(258,1840040,31,3,1,3,3,3,2,3,3,3,3),(259,1840040,32,3,1,3,3,3,2,3,3,3,3),(260,1840040,33,3,3,3,3,3,3,3,3,3,3),(261,1544861,28,3,3,3,3,3,3,3,3,3,3),(262,1544861,29,3,3,3,3,3,3,3,3,3,3),(263,1544861,30,2,3,3,3,3,3,3,3,3,3),(264,1544861,31,3,1,3,3,2,1,3,3,3,3),(265,1544861,32,2,1,3,3,2,2,3,3,3,3),(266,1544861,33,3,3,3,3,3,3,3,3,3,3),(267,2170303,28,2,2,3,2,2,2,3,3,3,3),(268,2170303,30,3,3,3,3,3,3,3,3,3,3),(269,2170303,31,3,1,3,3,3,1,3,3,3,3),(270,2170303,33,3,3,3,3,2,3,3,3,3,3),(271,2170275,28,3,3,3,3,3,3,3,3,2,2),(272,2170275,29,3,3,3,2,3,3,3,3,2,2),(273,2170275,30,2,3,3,2,3,3,3,3,2,2),(274,2170275,31,3,1,3,3,2,2,3,3,2,2),(275,2170275,32,3,3,3,2,3,3,3,3,2,2),(276,2170275,33,2,2,3,2,3,3,3,3,2,2),(277,2170301,28,3,3,3,3,3,3,3,3,3,1),(278,2170301,29,3,2,3,3,3,2,3,3,2,1),(279,2170301,30,3,2,3,3,3,2,3,3,2,1),(280,2170301,31,3,2,3,3,3,2,3,3,2,1),(281,2170301,32,3,1,3,2,1,1,3,3,1,1),(282,2170301,33,3,2,2,3,2,2,3,3,1,1),(283,2170341,28,3,3,3,3,3,3,3,2,3,3),(284,2170341,30,2,3,3,2,3,3,3,3,3,3),(285,2170341,31,3,2,3,3,3,3,3,2,3,3),(286,2170341,32,3,2,3,2,3,3,3,3,3,3),(287,2170341,33,3,3,3,3,3,3,3,3,3,3),(288,2070123,29,3,2,3,3,2,3,3,3,2,3),(289,2070123,30,3,2,3,3,2,3,3,3,2,3),(290,2070123,32,3,3,3,3,3,3,3,3,3,3),(291,2070123,43,3,3,3,3,3,3,3,3,3,3),(292,2070123,44,3,3,3,3,3,3,3,3,3,3),(293,2070123,45,3,3,3,3,3,3,3,3,3,3),(294,2170335,28,3,3,3,3,3,3,3,3,2,2),(295,2170335,29,3,3,3,2,3,3,3,3,2,2),(296,2170335,30,2,3,3,2,3,3,3,3,2,2),(297,2170335,31,3,1,3,3,3,2,3,3,2,2),(298,2170335,32,3,3,3,2,3,3,3,3,2,2),(299,2170335,33,2,2,3,2,3,3,3,3,2,2),(300,1841716,28,1,2,3,3,2,2,3,3,3,3),(301,1841716,29,2,2,3,3,2,1,3,3,3,3),(302,1841716,30,2,1,3,3,1,1,3,2,3,3),(303,1841716,31,3,1,3,3,1,1,3,2,3,3),(304,1841716,32,3,1,3,3,2,1,3,3,3,3),(305,1841716,33,3,2,3,3,2,3,3,3,3,3),(306,2170297,28,3,3,3,2,3,3,2,3,3,3),(307,2170297,29,3,3,3,2,3,3,2,3,3,3),(308,2170297,30,3,3,3,2,3,3,2,3,3,3),(309,2170297,31,3,3,3,2,2,3,2,3,3,3),(310,2170297,32,3,3,3,1,3,3,2,3,3,3),(311,2170297,33,3,3,3,3,3,3,2,3,3,3),(312,2170296,28,3,3,3,2,3,3,2,3,2,2),(313,2170296,29,3,3,3,2,3,3,2,3,3,3),(314,2170296,30,3,3,3,2,3,3,2,3,3,3),(315,2170296,31,3,1,3,2,2,1,2,3,2,2),(316,2170296,32,3,1,3,1,2,1,2,3,2,2),(317,2170296,33,3,3,3,3,3,3,2,3,3,3),(318,1825545,28,3,3,3,3,3,3,3,3,3,3),(319,1825545,30,3,3,3,3,3,3,3,3,3,3),(320,1825545,31,2,2,3,2,3,1,3,2,3,3),(321,1825545,43,3,3,3,3,3,2,3,2,3,3),(322,1825545,57,3,3,3,3,3,3,3,3,3,3),(323,1825545,65,3,3,3,3,3,2,3,3,3,3),(324,1825545,66,3,1,3,3,3,2,3,3,3,3),(325,1825545,67,3,3,3,3,3,2,3,3,3,3),(326,1825545,71,3,3,3,3,3,2,3,3,3,3),(327,2170265,28,3,2,3,3,3,3,3,3,3,3),(328,2170265,29,3,3,3,3,3,3,3,3,3,3),(329,2170265,30,3,3,3,3,3,3,3,3,3,3),(330,2170265,31,3,2,3,3,3,2,3,3,3,3),(331,2170265,32,3,3,3,3,3,3,3,3,3,3),(332,2170265,33,3,3,3,3,3,3,3,3,3,3),(333,2170284,28,3,3,3,3,3,3,2,3,3,3),(334,2170284,29,3,3,3,3,3,3,2,2,3,3),(335,2170284,30,3,3,3,3,3,3,2,3,3,3),(336,2170284,31,3,2,3,3,3,2,2,3,3,3),(337,2170284,32,3,2,3,3,3,2,2,3,3,3),(338,2170284,33,3,2,3,3,3,2,2,3,3,3),(339,1670978,10,1,2,3,3,3,3,3,3,2,2),(340,1670978,10,1,1,1,1,1,1,1,1,1,1);
 
-ALTER TABLE `RespIdntInst`
-  ADD CONSTRAINT `RespIdntInst_ibfk_1` FOREIGN KEY (`id_Alumno`) REFERENCES `Alumnos` (`Cuenta`);
-COMMIT;
+INSERT INTO `RespIdntInst` VALUES (7,1670978,3,3),(8,1670978,3,3),(9,1771111,3,3),(10,1670978,3,3),(11,1670978,1,1);
+
+INSERT INTO `sessions` VALUES ('9m0ebv_ST3MfPnGto2nocAX1Bh65kFHo',1697175488,'{\"cookie\":{\"originalMaxAge\":null,\"expires\":null,\"httpOnly\":true,\"path\":\"/\"},\"flash\":{},\"passport\":{\"user\":1670978}}');

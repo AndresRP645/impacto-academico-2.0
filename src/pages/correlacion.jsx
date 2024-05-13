@@ -83,6 +83,23 @@ export default function Correlacion() {
               </Table>
               <br />
               <p>El valor de la chi cuadrada es de: {x2}</p>
+              <br />
+              <p>Con los grados de libertad = 4 y un nivel de significancia α = 0.05</p>
+              <br />
+              <p>El valor máximo esperado para la chi cuadrada para aceptar la hipotesis nula es de 9.4877</p>
+              <br />
+              <div>
+                  <p>
+                    Por lo tanto
+                  </p>{x2 < 9.4877 ?
+                  <p>
+                    la hipotesis nula se acepta, lo cual quiere decir que, estos atributos tienen poca o nula relación entre si
+                  </p>
+                  :
+                  <p>
+                    la hipotesis nula se rechaza, lo que quiere decir que estos atributos tienen reación entre sí
+                  </p>  
+            }</div>
             </Card.Body>
           </Card>
         </Col>

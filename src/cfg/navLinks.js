@@ -1,7 +1,7 @@
 export const admin = [
     {
-      title: "Contestar encuesta",
-      path: "/login",
+      title: "Menu",
+      path: "/menu",
     }
   ];
 

@@ -84,6 +84,7 @@ export default function Login() {
                       <Form.Select
                         aria-label="Selecciona tu carrera"
                         name="id_carrera"
+                        disabled
                         onChange={(e) =>
                           setCredentials({
                             ...credentials,
@@ -91,7 +92,7 @@ export default function Login() {
                           })
                         }
                       >
-                        <option>Selecciona tu carrera</option>
+                        {/*<option>Selecciona tu carrera</option>*/}
                         {carreras.map((carrera, i) => (
                           <option key={i} value={carrera.id}>
                             {carrera.value}
