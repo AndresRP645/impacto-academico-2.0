@@ -3,7 +3,7 @@ import 'dotenv/config';
 module.exports = {
     database: {
         host: process.env.HOST || 'localhost', 
-        userdb: process.env.USER || 'root',
+        user: process.env.USERDB || 'root',
         password: process.env.PASSWD || '',
         database: process.env.DB || 'impactoacademico',
         /*ssl:{
