@@ -4,7 +4,6 @@ import pool from "@/cfg/database";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    try{
       const { cuenta, nombre, carrera } = await req.body;
 
     if (cuenta === 'admin'){
@@ -92,9 +91,6 @@ export default async function handler(req, res) {
       });*/
       setCookie('sessionToken', token, { req, res, maxAge: 60 * 60});
       res.status(200).send('OK');
-    }
-    } catch(error){
-      res.status(504).send(error);
     }
   }
 }

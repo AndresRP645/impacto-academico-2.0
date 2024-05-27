@@ -31,8 +31,6 @@ export default function Login() {
         alert(error.response.request.response);
       }  else if (error.response.status === 502) {
         router.push('/menu');
-      } else if (error.response.status === 504) {
-        console.log(error.response.request.response);
       } else if (error.response.status === 500) {
         alert(
           "No has ingresado todos tus datos"
