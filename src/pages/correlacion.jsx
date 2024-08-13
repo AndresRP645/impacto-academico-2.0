@@ -65,15 +65,15 @@ export default function Correlacion() {
                 <thead>
                   <tr className="table-primary">
                     <th className="table-success"> # </th>
-                    <th> 1 </th>
-                    <th> 2 </th>
-                    <th> 3 </th>
+                    <th> Malo </th>
+                    <th> Neutro </th>
+                    <th> Bueno </th>
                   </tr>
                 </thead>
                 <tbody>
                   {Object.values(contingencia).map((resp, i) => (
                     <tr key={i}>
-                      <td className="table-info">{i + 1}</td>
+                      <td className="table-info">{i == 0 ? "Malo" : i == 1 ? "Neutro" : "Bueno"}</td>
                       {Object.values(resp).map((e, j) => (
                         <td key={j}>{e}</td>
                       ))}
