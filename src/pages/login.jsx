@@ -84,7 +84,6 @@ export default function Login() {
                       <Form.Select
                         aria-label="Selecciona tu carrera"
                         name="id_carrera"
-                        disabled
                         onChange={(e) =>
                           setCredentials({
                             ...credentials,
